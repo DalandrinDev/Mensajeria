@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+body {
+	background: url(fondo.jpg) no-repeat fixed center;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.gestion {
+    margin-top: 100px;
+    margin-left: 15%;
+}
+
+.social {
+    margin-top: -34px;
+    margin-left: 70%;
+}
+
+.lista {
+	margin-top: 20px;
+	margin-left: 16%;
+}
+
+#MensajeTexto {
+	margin-left: 30%;
+	margin-right: 21.8%;
+}
