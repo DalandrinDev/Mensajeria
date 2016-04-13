@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a>Mensajeria UNED</a></li>
+            </ul>
+        </nav>
+        <form action="validar.php" method='post'>
+            <div class="contenedor">
+                <p>Inicio de sesi&oacute;n</p>
+                <p>Usuario: </p><input type='text' class='txtbx' id='username' name='username' placeholder='usuario' required /><br>
+                <p>Contraseña: </p><input type='password' class='password' id='password' name='password' placeholder='contrase&ntilde;a' required /><br>
+                <input type='submit' name='submit' value='Enviar'/>
+            </div>
+        </form>
+    </body>
+</html>

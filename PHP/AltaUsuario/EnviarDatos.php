@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
     </head>
     <body>
         <?php
+            include '../conexion.php';
             echo '<br>';
             echo '<br>';
             echo '<br>';
@@ -14,8 +15,7 @@
             echo '<br>';
             echo '<br>';
             echo '<br>';
-            $ordenar=mysql_query('ALTER TABLE socio AUTO_INCREMENT=17');
-            $insertar="INSERT INTO socio VALUES(null,'$nombre','$apellido,'$telefono')";
+            $insertar="INSERT INTO contactos VALUES(null,'$nombre','$apellido,'$telefono')";
         ?>
         <div class='resolucion'>
             <?php
