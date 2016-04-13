@@ -1,0 +1,25 @@
+----------Enlaces de las herramientas utilizadas----------
+
+Descarga de Ubuntu Server:
+http://www.ubuntu.com/download/server
+
+Descarga de VirtualBox:
+https://www.virtualbox.org/wiki/Downloads
+
+Descarga de editor de texto SublimeText:
+https://www.sublimetext.com/3
+
+Descarga de aplicacion de escritorio GitHub:
+https://desktop.github.com/
+
+Descarga de Xampp:
+https://www.apachefriends.org/es/download.html
+
+----------Tutoriales de YouTube consultados----------
+
+Aprender a usar GitHub rápido:
+https://www.youtube.com/watch?v=E3usf4UdkAI
+
+Instalar y configurar Telegram-Cli:
+
+
