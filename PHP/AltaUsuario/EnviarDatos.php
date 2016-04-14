@@ -6,20 +6,14 @@
     <body>
         <?php
             include '../conexion.php';
-            echo '<br>';
-            echo '<br>';
-            echo '<br>';
             $nombre = $_POST['nombre'];
             $apellido = $_POST['apellido'];
             $telefono = $_POST['telefono'];
-            echo '<br>';
-            echo '<br>';
-            echo '<br>';
-            $insertar="INSERT INTO contactos VALUES(null,'$nombre','$apellido,'$telefono')";
+            $insertar="INSERT INTO contactos VALUES('$nombre','$apellido,'$telefono')";
         ?>
         <div class='resolucion'>
             <?php
-                $resultado=mysql_query($insertar) or trigger_error(mysql_error().' in '.$insertar) or die ("No se ha podido enviar la información correctamente.");
+                $resultado=mysqli_query($insertar) or trigger_error(mysqli_error().' in '.$insertar) or die ("No se ha podido enviar la información correctamente.");
                 if ($resultado) {
                     echo "La información se ha mandado satisfactoriamente";
                 }else{
