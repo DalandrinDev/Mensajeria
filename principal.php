@@ -8,7 +8,7 @@
         <?php
         session_start();
         $_SESSION['validado']=FALSE;
-        header("location: inicio.php");
+        header("location: PHP/inicio.php");
         ?>
     </body>
 </html>

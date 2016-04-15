@@ -24,7 +24,7 @@
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['rol'] = "administrador";
         //redirige a administrador.php.
-        redirect('../home.php');
+        redirect('index.php');
     }
     //----ESTE PUEDE SER MAS DIFICIL DE ENTENDER----
     //si de la consulta encuentra que hay una linea al menos
