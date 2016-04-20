@@ -7,19 +7,15 @@
         <?php
             include '../conexion.php';
             $nombre = $_POST['nombre'];
-            $apellido = $_POST['apellido'];
+            $apellidos = $_POST['apellidos'];
             $telefono = $_POST['telefono'];
-            $insertar="INSERT INTO contactos VALUES('$nombre','$apellido,'$telefono')";
-        ?>
-        <div class='resolucion'>
-            <?php
-                $resultado=mysqli_query($insertar) or trigger_error(mysqli_error().' in '.$insertar) or die ("No se ha podido enviar la información correctamente.");
+    		$resultado="INSERT INTO contactos VALUES(NULL'$nombre','$apellidos,'$telefono')";
+			$insertar = mysqli_query($link, $resultado) or die (mysqli_error($insertar));
                 if ($resultado) {
                     echo "La información se ha mandado satisfactoriamente";
                 }else{
                     echo "La información no ha podido enviarse, inténtelo de nuevo.";
                 }
-            ?>
-        </div>
+        ?>
     </body>
 </html>
