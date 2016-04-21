@@ -4,5 +4,5 @@
     $clavecontactos = $_POST['clavecontactos'];
 	$resultado="DELETE FROM contactos WHERE clavecontactos = '$clavecontactos'";
 	$insertar = mysqli_query($link, $resultado);
-	header("location: ../index.php");
+	header("location: ../home.php");
 ?>

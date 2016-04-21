@@ -7,5 +7,5 @@
     $facultad = $_POST['facultad'];
 	$resultado="INSERT INTO contactos VALUES(NULL, '$nombre', '$apellido', '$telefono', '$facultad')";
 	$insertar = mysqli_query($link, $resultado);
-	header("location: ../index.php");
+	header("location: ../home.php");
 ?>
