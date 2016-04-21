@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <?php
-            include '../conexion.php';
-            $nombre = $_POST['nombre'];
-            $apellido = $_POST['apellidos'];
-            $telefono = $_POST['telefono'];
-    		$resultado="INSERT INTO contactos VALUES(NULL, '$nombre', '$apellido', '$telefono')";
-			$insertar = mysqli_query($link, $resultado);
-			header("location: ../index.php");
-        ?>
-    </body>
-</html>
+<!--Se encarga de recopilar los datos introducidos en AltaUsuario.php e introducirlos en la base de datos-->
+<?php
+    include '../conexion.php';
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellidos'];
+    $telefono = $_POST['telefono'];
+    $facultad = $_POST['facultad'];
+	$resultado="INSERT INTO contactos VALUES(NULL, '$nombre', '$apellido', '$telefono', '$facultad')";
+	$insertar = mysqli_query($link, $resultado);
+	header("location: ../index.php");
+?>
