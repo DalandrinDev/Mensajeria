@@ -1,6 +1,6 @@
 <!--Se encarga de recopilar los datos introducidos en AltaUsuario.php e introducirlos en la base de datos-->
 <?php
-    include '../conexion.php';
+    include '../conectar.php';
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellidos'];
     $telefono = $_POST['telefono'];
