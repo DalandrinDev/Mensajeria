@@ -19,8 +19,10 @@ CREATE TABLE mensaje (
 CREATE TABLE admin (
 	claveadmin INT NOT NULL,
 	nombre VARCHAR(5) NOT NULL,
+	apellidos VARCHAR(40) NOT NULL,
 	contrasena VARCHAR(4) NOT NULL,
+	rango VARCHAR(10) NOT NULL,
 	PRIMARY KEY (claveadmin)
 ) ENGINE=InnoDB;
 
-INSERT INTO admin VALUES(1, "admin", "uned");
+INSERT INTO admin VALUES(1, "admin","","uned","Administrador");

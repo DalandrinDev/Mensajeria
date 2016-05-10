@@ -31,19 +31,19 @@
 				<!--Este boton se encarga de enseñar los distintos canales de mensajeria instantanea qje puede usar el usuario para mandar el mensaje que desea.-->
 				<div class="social">
 					<div class="btn-group">
-						<button type="button" class="btn btn-primary">Elige una opción</button>
+						<button type="button" class="btn btn-primary">Gestión</button>
 						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Telegram</a></li>
+							<li><a href="AltaAyudante/AltaAyudante.php">Añadir Ayudante</a></li>
 							<!--Este comando pone una separación entre las distintas opciones.-->
 							<li class="divider"></li>
-							<li><a href="#">Whatsapp</a></li>
+							<li><a href="BajaAyudante/BajaAyudante.php">Eliminar Ayudante</a></li>
 							<li class="divider"></li>
-							<li><a href="#">SMS</a></li>
+							<li><a href="#">Opciones</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Otra</a></li>
+							<li><a href="#">Otras</a></li>
 						</ul>
 					</div>
 				</div>
