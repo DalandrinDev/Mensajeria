@@ -11,13 +11,13 @@ CREATE TABLE contactos (
 ) ENGINE=InnoDB;
 
 CREATE TABLE mensaje (
-	clavemensaje INT NOT NULL,
+	clavemensaje INT AUTO_INCREMENT NOT NULL,
 	texto VARCHAR(140) NOT NULL,
 	PRIMARY KEY (clavemensaje)
 ) ENGINE=InnoDB;
 
 CREATE TABLE admin (
-	claveadmin INT NOT NULL,
+	claveadmin INT AUTO_INCREMENT NOT NULL,
 	nombre VARCHAR(5) NOT NULL,
 	apellidos VARCHAR(40) NOT NULL,
 	contrasena VARCHAR(4) NOT NULL,
