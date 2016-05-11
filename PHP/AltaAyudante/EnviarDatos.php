@@ -4,7 +4,8 @@
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellidos'];
     $contraseña = $_POST['contrasena'];
-	$resultado="INSERT INTO admin VALUES(NULL, '$nombre', '$apellido', '$contrasena')";
+    $rango = $_POST['rango'];
+    $resultado="INSERT INTO admin VALUES(NULL, '$nombre', '$apellido', '$contraseña', '$rango')";
 	$insertar = mysqli_query($link, $resultado);
 	header("location: ../home.php");
 ?>
