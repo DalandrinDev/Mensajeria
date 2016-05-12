@@ -11,69 +11,17 @@
 		<title>Mensajeria</title>
 	</head>
 	<body>
-		<!--Esta es la seccion de ambos botones-->
-		<section id="opciones" class="BotonesOpcion">
-			<article id="Opcion">
-				<!--Este botón se va a encargar de las opciones sobre la gestion de usuarios, es decir, de insertar o borrar usuarios de la base de datos.-->
-				<div class="gestion">
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary">Gestión de usuarios</button>
-						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="AltaUsuario/AltaUsuario.php">Añadir usuario</a></li>
-							<li class="divider"></li>
-							<li><a href="BajaUsuario/BajaUsuario.php">Eliminar usuario</a></li>
-						</ul>
-					</div>
-				</div>
-				<!--Este boton se encarga de enseñar los distintos canales de mensajeria instantanea qje puede usar el usuario para mandar el mensaje que desea.-->
-				<div class="social">
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary">Gestión</button>
-						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="AltaAyudante/AltaAyudante.php">Añadir Ayudante</a></li>
-							<!--Este comando pone una separación entre las distintas opciones.-->
-							<li class="divider"></li>
-							<li><a href="BajaAyudante/BajaAyudante.php">Eliminar Ayudante</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Opciones</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Otras</a></li>
-						</ul>
-					</div>
-				</div>
-			</article>
+		<section>
+			<div class="GestionTutores">
+				<button type="button" class="btn btn-primary btn-lg btn-block">Gestión Tutores</button>
+				<li><a  href="/AltaUsuario/AltaUsuario.php"></li>
+				    <!--<input type="button" value="Inicio" onclick="window.location.href('/AltaUsuario/AltaUsuario.php');"/>-->
+			</div>
 		</section>
-		<!--Esta sección contiene la lista de cointactos que van a recibir el mensaje-->
-		<section class="lista">
-				<div class="checkbox">
-					<label><input type="checkbox" value="">Option 1</label>
-				</div>
-				<div class="checkbox">
-					<label><input type="checkbox" value="">Option 2</label>
-				</div>
-				<div class="checkbox">
-					<label><input type="checkbox" value="">Option 3</label>
-				</div>
-		</section>
-		<!--Esta sección contiene el mensaje que quiere ser enviado.-->
-		<section id="Texto" class="Mensaje">
-			<article id="MensajeTexto">
-				<div class="form-group">
-					<div class="panel panel-default">
-						<div class="panel-heading">Mensaje</div>
-							<div class="controls">
-								<textarea rows="6" placeholder="Escribe el mensaje que deseas enviar a tus contactos..." name="mensaje" id="mensaje" class="form-control txtarea requiredField"></textarea>	
-							</div>
-						</div>
-					</div>
-				</div>
-			</article>
+		<section>
+			<div class="GestionUsuarios">
+				<button type="button" class="btn btn-primary btn-lg btn-block">Gestión Usuarios</button>
+			</div>
 		</section>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
