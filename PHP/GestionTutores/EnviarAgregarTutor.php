@@ -3,9 +3,9 @@
     include '../conectar.php';
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellidos'];
-    $telefono = $_POST['telefono'];
+    $alias = $_POST['alias'];
     $facultad = $_POST['facultad'];
-	$resultado="INSERT INTO contactos VALUES(NULL, '$nombre', '$apellido', '$telefono', '$facultad')";
+	$resultado="INSERT INTO tutores VALUES(NULL, '$nombre', '$apellido', '$alias', '$facultad')";
 	$insertar = mysqli_query($link, $resultado);
-	header("location: ../home.php");
+	//header("location: ../home.php");
 ?>

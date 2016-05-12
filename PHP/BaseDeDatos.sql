@@ -7,7 +7,7 @@ CREATE TABLE tutores (
 	apellidos VARCHAR(50) NOT NULL,
 	alias VARCHAR(15) NOT NULL,
 	facultad VARCHAR(15) NOT NULL,
-	PRIMARY KEY (clavecontactos)
+	PRIMARY KEY (clavetutores)
 ) ENGINE=InnoDB;
 
 CREATE TABLE mensaje (
@@ -22,16 +22,5 @@ CREATE TABLE usuarios (
 	nombre VARCHAR(10) NOT NULL,
 	apellidos VARCHAR(40) NOT NULL,
 	contrasena VARCHAR(4) NOT NULL,
-	PRIMARY KEY (claveadmin)
+	PRIMARY KEY (claveusuarios)
 ) ENGINE=InnoDB;
-
-CREATE TABLE envios (
-	claveenvios INT AUTO_INCREMENT NOT NULL,
-	fecha VARCHAR(10) NOT NULL,
-	mensaje
-	tutores
-	enviado VARCHAR(2) NOT NULL,
-	autor 
-)
-
-INSERT INTO admin VALUES(1, "admin","","uned","Administrador");
