@@ -10,11 +10,11 @@ CREATE TABLE tutores (
 	PRIMARY KEY (clavetutores)
 ) ENGINE=InnoDB;
 
-CREATE TABLE mensaje (
-	clavemensaje INT AUTO_INCREMENT NOT NULL,
+CREATE TABLE mensajes (
+	clavemensajes INT AUTO_INCREMENT NOT NULL,
 	texto VARCHAR(140) NOT NULL,
 	autor VARCHAR(20) NOT NULL,
-	PRIMARY KEY (clavemensaje)
+	PRIMARY KEY (clavemensajes)
 ) ENGINE=InnoDB;
 
 CREATE TABLE usuarios (

@@ -1,3 +1,4 @@
+<!--Valida que el usuario que está logeado es el administrador-->
 <?php
     include 'conectar.php';
     

@@ -3,9 +3,9 @@
     include '../conectar.php';
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellidos'];
-    $alias = $_POST['alias'];
+    $contrasena = $_POST['contrasena'];
     $facultad = $_POST['facultad'];
-	$resultado="INSERT INTO tutores VALUES(NULL, '$nombre', '$apellido', '$alias', '$facultad')";
+	$resultado="INSERT INTO usuarios VALUES(NULL, '$nombre', '$apellido', '$contrasena')";
 	$insertar = mysqli_query($link, $resultado);
-	header("location: GestionTutores.php");
+	header("location: GestionUsuario.php");
 ?>

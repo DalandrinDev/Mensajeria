@@ -1,3 +1,4 @@
+<!--Archivo de login, para que puede acceder el administrador-->
 <!DOCTYPE html>
 <html>
     <head>

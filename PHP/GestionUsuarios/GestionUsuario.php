@@ -16,23 +16,19 @@
 					<td width="150" style='font-weight: bold'>ID</td> 
 					<td width="150" style='font-weight: bold'>Nombre</td> 
 					<td width="150" style='font-weight: bold'>Apellidos</td> 
-					<td width="150" style='font-weight: bold'>Alias</td> 
-					<td width="150" style='font-weight: bold'>Facultad</td>
-					<td width="150" style='font-weight: bold'>Eliminar</td>
-					<td width="150" style='font-weight: bold'>Modificar</td>
+					<td width="150" style='font-weight: bold'>Contraseña</td> 
 				</tr>
 
 				<?php
 					include '../conectar.php';
-					$query = "SELECT * FROM tutores";
+					$query = "SELECT * FROM usuarios";
 					$result = mysqli_query($link, $query);
 					while ($registro = mysqli_fetch_array($result)) {
 						echo '<tr>';
-							echo '<td width="150">'.$registro['clavetutores'].'</td>';
+							echo '<td width="150">'.$registro['claveusuarios'].'</td>';
 							echo '<td width="150">'.$registro['nombre'].'</td>';
 							echo '<td width="150">'.$registro['apellidos'].'</td>';
-							echo '<td width="150">'.$registro['alias'].'</td>';
-							echo '<td width="150">'.$registro['facultad'].'</td>';
+							echo '<td width="150">'.$registro['contrasena'].'</td>';
 							/*echo '<td width="150">'.'<input type="button" onclick="Eliminar('.$registro['clavetutores'].')" value="Eliminar Tutor">'.'</td>';*/
 							echo "<td><a href='EliminarTutor.php'>Borrar</a></td>";
 						echo '</tr>';
@@ -40,9 +36,6 @@
 				?>
 			</table>
 		</div>
-		<a href="AgregarTutor.php">Agregar Tutor</a> 
-		<?php
-			include '../GestionMensajes/Mensaje.php';
-		?>
+		<a href="AgregarUsuario.php">Agregar Tutor</a> 
 	</body>
 </html>
