@@ -14,7 +14,7 @@
 	<body>
 		<div id='cssmenu'>
 			<ul>
-				<li class='active'><a href='home.php'><span>Inicio</span></a></li>
+				<li class='active'><a href='#'><span>Inicio</span></a></li>
 				<li><a href='GestionTutores/GestionTutores.php'><span>Gestionar Tutores</span></a></li>
 				<li><a href='GestionMensajes/GestionMensajes.php'><span>Gestionar Mensajes</span></a></li>
 				<li><a href='GestionEnvios/GestionEnvios.php'><span>Gestionar Envios</span></a></li>
