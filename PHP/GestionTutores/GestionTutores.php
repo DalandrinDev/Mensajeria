@@ -1,13 +1,14 @@
 <!--Archivo principal que muestra todos los tutores idsponibles y permite gestionarlos-->
 <!DOCTYPE html>
 	<head>
-		<!--<script language="JavaScript">
+		<script language="JavaScript">
 			function Eliminar(clavetutores) {
-				var agree=confirm("¿Realmente desea eliminar el cliente seleccionado?");
-				if (agree) { document.location="EliminarTutor.php?id="$registro=[clavetutores]; }
-				else return false ;
+				alert('hi');
+				//var agree=confirm("¿Realmente desea eliminar el cliente seleccionado?");
+				/*if (agree) { */window.location="EliminarTutor.php?id="+clavetutores; //}
+				//else return false ;
 			}
-		</script>-->
+		</script>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="../../Recursos/Css/styles.css">
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
@@ -47,7 +48,7 @@
 							echo '<td width="150">'.$registro['apellidos'].'</td>';
 							echo '<td width="150">'.$registro['alias'].'</td>';
 							echo '<td width="150">'.$registro['facultad'].'</td>';
-							/*echo '<td width="150">'.'<input type="button" onclick="Eliminar('.$registro['clavetutores'].')" value="Eliminar Tutor">'.'</td>';*/
+							echo '<td width="150">'.'<input type="button" id='.$registro["clavetutores"].' onclick="Eliminar(this.id)" value="Eliminar Tutor">'.'</td>';
 							echo "<td><a href='EliminarTutor.php'>Borrar</a></td>";
 						echo '</tr>';
 					}
