@@ -40,7 +40,7 @@
 						echo '<tr>';
 							echo '<td width="150">'.$registro['clavemensajes'].'</td>';
 							echo '<td width="150">'.$registro['texto'].'</td>';
-							echo '<td width="150">'.$registro['autor'].'</td>';
+							echo '<td width="150">'.$registro['claveusuarios'].'</td>';
 						echo '<tr>';
 					};
 				?>

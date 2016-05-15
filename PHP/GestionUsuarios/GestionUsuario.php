@@ -29,7 +29,8 @@
 				<tr> 
 					<td width="150" style='font-weight: bold'>ID</td> 
 					<td width="150" style='font-weight: bold'>Nombre</td> 
-					<td width="150" style='font-weight: bold'>Apellidos</td> 
+					<td width="150" style='font-weight: bold'>Apellidos</td>
+					<td width="150" style='font-weight: bold'>Rol</td>
 					<td width="150" style='font-weight: bold'>Contraseña</td> 
 				</tr>
 
@@ -42,6 +43,7 @@
 							echo '<td width="150">'.$registro['claveusuarios'].'</td>';
 							echo '<td width="150">'.$registro['nombre'].'</td>';
 							echo '<td width="150">'.$registro['apellidos'].'</td>';
+							echo '<td width="150">'.$registro['rol'].'</td>';
 							echo '<td width="150">'.$registro['contrasena'].'</td>';
 							/*echo '<td width="150">'.'<input type="button" onclick="Eliminar('.$registro['clavetutores'].')" value="Eliminar Tutor">'.'</td>';*/
 							echo "<td><a href='EliminarTutor.php'>Borrar</a></td>";

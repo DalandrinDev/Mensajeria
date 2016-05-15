@@ -3,9 +3,9 @@
     include '../conectar.php';
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellidos'];
+    $rol = $_POST['rol'];
     $contrasena = $_POST['contrasena'];
-    $facultad = $_POST['facultad'];
-	$resultado="INSERT INTO usuarios VALUES(NULL, '$nombre', '$apellido', '$contrasena')";
+	$resultado="INSERT INTO usuarios VALUES(NULL, '$nombre', '$apellido', '$rol', '$contrasena')";
 	$insertar = mysqli_query($link, $resultado);
 	header("location: GestionUsuario.php");
 ?>

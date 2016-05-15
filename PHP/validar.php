@@ -1,37 +1,27 @@
 <!--Valida que el usuario que está logeado es el administrador-->
 <?php
-//echo "$query";
     include 'conectar.php';
-    //$user=false;
     $usuario=$_POST['username'];
+    $rol=$_POST['rol'];
     $contrasena=$_POST['password'];
-    $query = mysqli_query("SELECT * FROM admin WHERE nombre = '$usuario' and contrasena = '$contrasena'");
-    echo "$query";
-    $numrows = mysqli_num_rows($query);
-    while ($linea = mysqli_fetch_rows($query)){
-        $usuario=$linea['nombre'];
-        $contrasena=$linea['contrasena'];
-        echo "$query";
-        $user=true;
-    }
+    $query = mysqli_query($link, "SELECT * FROM usuarios WHERE nombre = '$usuario' and contrasena = '$contrasena'");
 
-    if($usuario == "admin" && $contrasena == "uned" && $user==false) {
+    if($usuario == "admin" && $contrasena == "uned") {
         mysqli_close();
         include 'conectar.php';
         session_start();
-        echo 'if $usuario admin';
         $_SESSION['username'] = $_POST['username'];
         $_SESSION['rol'] = "administrador";
         redirect('home.php');
     }
 
-    if($user==true) {
+    if($usuario == '' && $rol == 'user' && $contrasena == '') {
         mysqli_close();
         include 'conectar.php';
-        session_start();ç
-        echo 'if $usuario true';
+        session_start();
+        echo "$usuario";
         $_SESSION['username'] = $usuario;
-        $_SESSION['rol'] = "administrador";
+        $_SESSION['rol'] = "user";
         redirect('home.php');
     }
     function redirect($pagina) {

@@ -20,7 +20,6 @@ CREATE TABLE usuarios (
 CREATE TABLE mensajes (
 	clavemensajes INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	texto VARCHAR(140) NOT NULL,
-	autor VARCHAR(20) NOT NULL,
 	claveusuarios int not null,
 	FOREIGN KEY (claveusuarios) REFERENCES usuarios(claveusuarios)
 );
@@ -29,8 +28,11 @@ CREATE TABLE mensajes (
 CREATE TABLE enviados(
 	claveenvio int(10) ZEROFILL NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	fechaenvio timestamp not null, 
-	claveusuarios int NOT NULL, 
-	clavemensajes int NOT NULL, 
-	FOREIGN KEY (claveusuarios) REFERENCES usuarios(claveusuarios),
-	FOREIGN KEY (clavemensajes) REFERENCES mensajes(clavemensajes)
+	clavemensajes int NOT NULL,
+	clavetutores int NOT NULL,
+	enviado SET('si', 'no') DEFAULT 'no',
+	claveusuarios int not null,
+	FOREIGN KEY (clavetutores) REFERENCES tutores(clavetutores),
+	FOREIGN KEY (clavemensajes) REFERENCES mensajes(clavemensajes),
+	FOREIGN KEY (claveusuarios) REFERENCES usuarios(claveusuarios)
 ); 
