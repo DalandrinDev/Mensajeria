@@ -1,31 +1,29 @@
-<!--Valida que el usuario que está logeado es el administrador-->
 <?php
-    include 'conectar.php';
-    $usuario=$_POST['username'];
-    $rol=$_POST['rol'];
-    $contrasena=$_POST['password'];
-    $query = mysqli_query($link, "SELECT * FROM usuarios WHERE nombre = '$usuario' and contrasena = '$contrasena'");
 
-    if($usuario == "admin" && $contrasena == "uned") {
-        mysqli_close();
-        include 'conectar.php';
-        session_start();
-        $_SESSION['username'] = $_POST['username'];
-        $_SESSION['rol'] = "administrador";
-        redirect('home.php');
-    }
+$usuario = $_POST['nnombre'];
+$pass = $_POST['npassword'];
 
-    if($usuario == '' && $rol == 'user' && $contrasena == '') {
-        mysqli_close();
-        include 'conectar.php';
-        session_start();
-        echo "$usuario";
-        $_SESSION['username'] = $usuario;
-        $_SESSION['rol'] = "user";
-        redirect('home.php');
-    }
-    function redirect($pagina) {
-        header('Location: ' . $pagina);
-        exit;
-    }
+if(empty($usuario) || empty($pass)){
+	header("Location: index.html");
+	exit();
+}
+
+
+$result = mysql_query("SELECT * from usuarios where Username='" . $usuario . "'");
+
+if($row = mysql_fetch_array($result)){
+	if($row['Password'] ==  $pass){
+		session_start();
+		$_SESSION['usuario'] = $usuario;
+		header("Location: contenido.php");
+	}else{
+		header("Location: index.html");
+		exit();
+	}
+}else{
+	header("Location: index.html");
+	exit();
+}
+
+
 ?>

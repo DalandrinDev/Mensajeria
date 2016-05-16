@@ -11,6 +11,11 @@
 				var agree= confirm("¿Quieres modificar este tutor?");
 				if (agree) {window.location="EnviarModificarTutor.php?id="+clavetutores; }
 			}
+			
+			function Enviar(clavetutores) {
+				var agree= confirm("¿Quieres modificar este tutor?");
+				if (agree) {window.location="EnviarMensaje.php?id="+clavetutores; }
+			}
 		</script>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="../../Recursos/Css/styles.css">
@@ -38,6 +43,7 @@
 					<td width="150" style='font-weight: bold'>Facultad</td>
 					<td width="150" style='font-weight: bold'>Eliminar</td>
 					<td width="150" style='font-weight: bold'>Modificar</td>
+					<td width="150" style='font-weight: bold'>Enviar Mensaje</td>
 				</tr>
 
 				<?php
@@ -53,6 +59,7 @@
 							echo '<td width="150">'.$registro['facultad'].'</td>';
 							echo '<td width="150">'.'<input type="button" id='.$registro["clavetutores"].' onclick="Eliminar(this.id)" value="Eliminar Tutor">'.'</td>';
 							echo '<td width="150">'.'<input type="button" id='.$registro["clavetutores"].' onclick="Modificar(this.id)" value="Modificar Tutor">'.'</td>';
+							echo '<td width="150">'.'<input type="button" id='.$registro["clavetutores"].' onclick="Enviar(this.id)" value="Enviar Mensaje">'.'</td>';
 						echo '</tr>';
 					}
 				?>
