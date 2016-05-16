@@ -1,29 +1,28 @@
+<!--Valida que el usuario que está logeado es el administrador-->
 <?php
+    include 'conectar.php';
+    $nombre = $_POST['nombre'];
+    echo "$nombre";
+    $contrasena = $_POST['password'];
+    echo "$contrasena";
 
-$usuario = $_POST['nnombre'];
-$pass = $_POST['npassword'];
+    if (empty($nombre) || empty($contrasena)) {
+        header("Location: index.html");
+        exit();
+    }
 
-if(empty($usuario) || empty($pass)){
-	header("Location: index.html");
-	exit();
-}
-
-
-$result = mysql_query("SELECT * from usuarios where Username='" . $usuario . "'");
-
-if($row = mysql_fetch_array($result)){
-	if($row['Password'] ==  $pass){
-		session_start();
-		$_SESSION['usuario'] = $usuario;
-		header("Location: contenido.php");
-	}else{
-		header("Location: index.html");
-		exit();
-	}
-}else{
-	header("Location: index.html");
-	exit();
-}
-
-
+    $resultado = mysqli_query($link, "SELECT * FROM usuarios WHERE nombre='" . $nombre . "'");
+    if ($row = mysqli_fetch_array($resultado)) {
+        if ($row['contrasena'] == $contrasena) {
+            session_start();
+            $_SESSION['nombre'] = $nombre;
+            header("Location: home.php");
+        }else{
+            header("Location: index.html");
+            exit();
+        }
+    }else{
+        header("Location: index.html");
+        exit();
+    }
 ?>

@@ -1,7 +1,7 @@
 <!--Formulario para insertar tutor-->
 <!DOCTYPE html>
 <?php
-	include "../comprobar.php";
+	
 ?>
 <html>
 	<head>
