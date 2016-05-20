@@ -3,5 +3,5 @@
 	include '../conectar.php';
 	session_start();
 	$resultado=mysqli_query($link, "DELETE FROM usuarios WHERE claveusuarios='{$_SESSION['idusuarios']}'");
-	header("location: GestionUsuarios.php");
+	header("location: /home.php");
 ?>

@@ -6,5 +6,5 @@
     $contrasena = md5($_POST['contrasena']);
 	$resultado="INSERT INTO usuarios VALUES(NULL, '$nombre', '$apellido', '$contrasena')";
 	$insertar = mysqli_query($link, $resultado);
-	header("location: GestionUsuarios.php");
+	header("location: ../home.php");
 ?>
