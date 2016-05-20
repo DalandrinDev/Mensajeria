@@ -5,9 +5,6 @@ USE mensajeria;
 
 #La tabla tutores guardará todos los tutores del centro, todos tendrán una ID, un nombre, dos apellidos, un álias propio
 #de Telegram, así que será obligatorio crearselo
-CREATE DATABASE mensajeria;
-USE mensajeria;
-
 CREATE TABLE tutores (
 	clavetutores INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(30) NOT NULL,
@@ -48,22 +45,3 @@ CREATE TABLE enviados(
 
 #Este es el unico registro que tendra la base de datos, guarda al SuperAdmin y la contraseña.
 INSERT INTO usuarios VALUES(NULL,'SuperAdmin','','uned');
-CREATE TABLE mensajes (
-	clavemensajes INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	texto VARCHAR(140) NOT NULL,
-	claveusuarios int not null,
-	FOREIGN KEY (claveusuarios) REFERENCES usuarios(claveusuarios)
-);
-
-
-CREATE TABLE enviados(
-	claveenvio int(10) ZEROFILL NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	fechaenvio timestamp not null, 
-	clavemensajes int NOT NULL,
-	clavetutores int NOT NULL,
-	enviado SET('si', 'no') DEFAULT 'no',
-	claveusuarios int not null,
-	FOREIGN KEY (clavetutores) REFERENCES tutores(clavetutores),
-	FOREIGN KEY (clavemensajes) REFERENCES mensajes(clavemensajes),
-	FOREIGN KEY (claveusuarios) REFERENCES usuarios(claveusuarios)
-); 

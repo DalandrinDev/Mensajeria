@@ -3,16 +3,8 @@
     include 'conectar.php';
     $nombre = $_POST['nombre'];
     $contrasena = $_POST['password'];
-?>
-    //Si el nombre o el usuario están vacios se mete dentro de la condición y redirecciona a la misma pagina
-<!--Valida que el usuario que está logeado es el administrador-->
-<?php
-    include 'conectar.php';
-    $nombre = $_POST['nombre'];
-    echo "$nombre";
-    $contrasena = $_POST['password'];
-    echo "$contrasena";
 
+    //Si el nombre o el usuario están vacios se mete dentro de la condición y redirecciona a la misma pagina
     if (empty($nombre) || empty($contrasena)) {
         header("Location: index.html");
         exit();
@@ -30,11 +22,6 @@
             $_SESSION['nombre']= $_POST['nombre'];
             header("Location: home.php");
         //Si la contraseña no es correcta te redirije
-    if ($row = mysqli_fetch_array($resultado)) {
-        if ($row['contrasena'] == $contrasena) {
-            session_start();
-            $_SESSION['nombre'] = $nombre;
-            header("Location: home.php");
         }else{
             header("Location: index.html");
             exit();
