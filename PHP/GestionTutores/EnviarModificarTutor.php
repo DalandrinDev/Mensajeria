@@ -9,5 +9,5 @@
 	$resultado="UPDATE tutores SET nombre='$nombre', apellidos='$apellido', alias='$alias', facultad='$facultad' WHERE clavetutores='{$_SESSION['idtutores']}'";
 	echo "$resultado";
 	$insertar = mysqli_query($link, $resultado);
-	header("location: GestionTutores.php");
+	header("location: ../home.php");
 ?>
