@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #Esta es la base de datos que usaré en el proyecto
 
 CREATE DATABASE mensajeria;
@@ -6,11 +5,9 @@ USE mensajeria;
 
 #La tabla tutores guardará todos los tutores del centro, todos tendrán una ID, un nombre, dos apellidos, un álias propio
 #de Telegram, así que será obligatorio crearselo
-=======
 CREATE DATABASE mensajeria;
 USE mensajeria;
 
->>>>>>> c861466fcb0c0aa2c5f0ebb5828109e33c5737ab
 CREATE TABLE tutores (
 	clavetutores INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(30) NOT NULL,
@@ -19,11 +16,8 @@ CREATE TABLE tutores (
 	facultad VARCHAR(15) NOT NULL
 );
 
-<<<<<<< HEAD
 #La tabla usuarios es la tabla donde se almacenarán los administradores, tendrán un ID, un nombre, dos apellidos y una
 #contraseña, esta estará encriptada para proteger esos datos
-=======
->>>>>>> c861466fcb0c0aa2c5f0ebb5828109e33c5737ab
 CREATE TABLE usuarios (
 	claveusuarios INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 	nombre VARCHAR(10) NOT NULL,
@@ -31,7 +25,6 @@ CREATE TABLE usuarios (
 	contrasena VARCHAR(4) NOT NULL
 );
 
-<<<<<<< HEAD
 #La tabla mensajes almacenará todos los mensajes que se escriban, tendrán un ID, el mensaje en sí, y el autor que lo escriba 
 CREATE TABLE mensajes (
 	clavemensajes INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -55,7 +48,6 @@ CREATE TABLE enviados(
 
 #Este es el unico registro que tendra la base de datos, guarda al SuperAdmin y la contraseña.
 INSERT INTO usuarios VALUES(NULL,'SuperAdmin','','uned');
-=======
 CREATE TABLE mensajes (
 	clavemensajes INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	texto VARCHAR(140) NOT NULL,
@@ -75,4 +67,3 @@ CREATE TABLE enviados(
 	FOREIGN KEY (clavemensajes) REFERENCES mensajes(clavemensajes),
 	FOREIGN KEY (claveusuarios) REFERENCES usuarios(claveusuarios)
 ); 
->>>>>>> c861466fcb0c0aa2c5f0ebb5828109e33c5737ab
