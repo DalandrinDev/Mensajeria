@@ -3,5 +3,5 @@
 	include '../conectar.php';
 	session_start();
 	$resultado=mysqli_query($link, "DELETE FROM tutores WHERE clavetutores='{$_SESSION['idtutores']}'");
-	header("location: GestionTutores.php");
+	header("location: ../home.php");
 ?>
