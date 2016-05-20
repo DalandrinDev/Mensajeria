@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--Es un formulario donde se almacenará el mensaje y se enviará pormetodo POST a EnviarMensaje.php-->
 <!DOCTYPE html>
 <html>
@@ -42,4 +43,15 @@
 	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 		<script src="../../Recursos/js/grayscale.js"></script>
 	</body>
+=======
+<html>
+	<head>
+		<body>
+			<form id="Mensaje" name="Mensaje" method="post" onsubmit="return validar();" action="../GestionMensajes/EnviarMensaje.php" width="150" height="500">
+				<textarea class="form-control" rows="3" name="texto"></textarea>
+				<input type="submit" class="boton" value="Enviar">
+			</form>
+		</body>
+	</head>
+>>>>>>> c861466fcb0c0aa2c5f0ebb5828109e33c5737ab
 </html>

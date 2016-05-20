@@ -7,5 +7,9 @@
     $facultad = $_POST['facultad'];
 	$resultado="INSERT INTO tutores VALUES(NULL, '$nombre', '$apellido', '$alias', '$facultad')";
 	$insertar = mysqli_query($link, $resultado);
+<<<<<<< HEAD
 	header("location: ../home.php");
+=======
+	header("location: GestionTutores.php");
+>>>>>>> c861466fcb0c0aa2c5f0ebb5828109e33c5737ab
 ?>
