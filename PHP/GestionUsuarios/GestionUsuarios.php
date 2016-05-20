@@ -1,73 +1,139 @@
-<!--Este archivo es el principal a la hora de gestionar todos los usuarios, es la base de toda su gestión, y donde se encuentran todas las opciones a realizar-->
 <!DOCTYPE html>
+<?php
+	include '../conectar.php';
+	session_start();
+?>
+<html>
 	<head>
-		<!--Estas dos funciones hechas con JavaScript se ocupan de eliminar y de modificar el usuario, al presionar el botón aparecerá una ventana de dialogo en la que hará una pregunta y al pulsar aceptar hará automaticamente la eliminacion, y lo modificará despues de pasar por un formulario y modificar los campos deseados-->
 		<script language="JavaScript">
-			function Eliminar(claveusuarios) {
+			function EliminarUsuario(claveusuarios) {
 				var agree=confirm("¿Quieres eliminar este usuario?");
 				if (agree) {window.location="EliminarUsuario.php"}
 			}
 
-			function Modificar(claveusuarios) {
+			function ModificarUsuario(claveusuarios) {
 				var agree= confirm("¿Quieres modificar este usuario?");
 				if (agree) {window.location="ModificarUsuario.php"}
 			}
 		</script>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../../Recursos/Css/styles.css">
-		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-		<script src="../../Recursos/js/script.js"></script>
-		<title>Mensajeria</title>
-	</head>
-	<body> 
-		<div id='cssmenu'>
-			<ul>
-				<li class='active'><a href='../home.php'><span>Inicio</span></a></li>
-				<li><a href='../GestionTutores/GestionTutores.php'><span>Gestionar Tutores</span></a></li>
-				<li><a href='../GestionMensajes/GestionMensajes.php'><span>Gestionar Mensajes</span></a></li>
-				<li><a href='../GestionEnvios/GestionEnvios.php'><span>Gestionar Envios</span></a></li>
-				<li class='last'><a href='#'><span>Gestionar Usuarios</span></a></li>
-			</ul>
-		</div>
-		<!--Dibuja la tabla donde se almacenarán los datos obtenidos de la consulta hecha más abajo-->
-		<div align='center'> 
-			<table border='1' cellpadding='0' cellspacing='0' width='600' bgcolor='#F6F6F6' bordercolor='#FFFFFF'> 
-				<tr> 
-					<td width="150" style='font-weight: bold'>ID</td> 
-					<td width="150" style='font-weight: bold'>Nombre</td> 
-					<td width="150" style='font-weight: bold'>Apellidos</td>
-					<td width="150" style='font-weight: bold'>Contraseña</td>
-					<td width="150" style='font-weight: bold'>Eliminar</td>
-					<td width="150" style='font-weight: bold'>Modificar</td>
-				</tr>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Mensajeria - Home</title>
 
-				<?php
-					include '../conectar.php';
-					session_start();
-					$query = "SELECT * FROM usuarios";
-					$result = mysqli_query($link, $query);
-					/*Este bucle hace que por cada registro de la consulta se almacenen los datos en la variable $registro
-					y los coloque en la tabla que hemos creado anteriormente*/
-					while ($registro = mysqli_fetch_array($result)) {
-						echo '<tr>';
-							echo '<td width="150">'.$_SESSION['idusuarios']=$registro['claveusuarios'].'</td>';
-							echo '<td width="150">'.$registro['nombre'].'</td>';
-							echo '<td width="150">'.$registro['apellidos'].'</td>';
-							echo '<td width="150">'.$registro['contrasena'].'</td>';
-							//Estos son los dos botones que al pulsar sobre ellos activan las funciones de JavaScript de arriba
-							echo '<td width="150">'.'<input type="button" id='.$registro["claveusuarios"].' onclick="Eliminar(this.id)" value="Eliminar Usuario">'.'</td>';
-							echo '<td width="150">'.'<input type="button" id='.$registro["claveusuarios"].' onclick="Modificar(this.id)" value="Modificar Usuario">'.'</td>';
-						echo '</tr>';
+		<!-- Bootstrap Core CSS -->
+	    <link href="../../Recursos/css/bootstrap.min.css" rel="stylesheet">
+
+	    <!-- Custom CSS -->
+	    <link href="../../Recursos/css/grayscale.css" rel="stylesheet">
+
+	    <!-- Custom Fonts -->
+	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+	</head>
+
+	<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+		<!-- Navigation -->
+	   <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+	        <div class="container">
+	            <div class="navbar-header">
+	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+	                    <i class="fa fa-bars"></i>
+	                </button>
+	                <a class="navbar-brand page-scroll" href="../home.php">
+	                    <span class="glyphicon glyphicon-envelope"></span><span class="light">Mensajeria</span>
+	                </a>
+	            </div>
+
+	            <!-- Collect the nav links, forms, and other content for toggling -->
+	            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+	                <ul class="nav navbar-nav">
+	                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+	                    <li class="hidden">
+	                        <a href="#page-top"></a>
+	                    </li>
+	                    <li>
+	                        <a href="../GestionEnviar/GestionEnviar.php">Mensajes</a>
+	                    </li>
+	                    <li>
+	                        <a href="../GestionTutores/GestionTutores.php">Tutores</a>
+	                    </li>
+	                    <li class="dropdown">
+					        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sistema</a>
+					        <ul class="dropdown-menu">
+					          <li><a href="#">Usuarios</a></li>
+					          <li><a href="#">Opción 1</a></li>
+					          <li><a href="#">Opción 2</a></li>
+					        </ul>
+						</li>
+	                </ul>
+	            </div>
+	            
+	        </div>
+	    </nav>
+	    <section id="usuarios" class="container content-section text-center">
+	    	<div class="seccion-usuario">
+		        <div class="row">
+		            <div class="col-lg-8 col-lg-offset-2">
+		                <h2>Usuarios</h2>     
+						<table class="table">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nombre</th>
+									<th>Apellidos</th>
+									<th>Contraseñas</th>
+									<th>Eliminar</th>
+									<th>Modificar</th>
+								</tr>
+							</thead>
+
+							<?php
+								$query = "SELECT * FROM usuarios";
+								$result = mysqli_query($link, $query);
+								/*Este bucle hace que por cada registro de la consulta se almacenen los datos en la variable $registro
+								y los coloque en la tabla que hemos creado anteriormente*/
+								while ($registro = mysqli_fetch_array($result)) {
+									echo '<tbody>';
+										echo '<tr>';
+											echo '<td>'.$_SESSION['idusuarios']=$registro['claveusuarios'].'</td>';
+											echo '<td>'.$registro['nombre'].'</td>';
+											echo '<td>'.$registro['apellidos'].'</td>';
+											echo '<td>'.$registro['contrasena'].'</td>';
+											//Estos son los dos botones que al pulsar sobre ellos activan las funciones de JavaScript de arriba
+											echo '<td>'.'<input type="button" class="btn btn-danger" onclick="EliminarUsuario()" value="Eliminar Usuario">'.'</td>';
+											echo '<td>'.'<input type="button" class="btn btn-warning" onclick="ModificarUsuario()" value="Modificar Usuario">'.'</td>';
+										echo '</tr>';
+									echo '</tbody>';
+								}
+							?>
+						</table>
+					</div>
+					<div class="col-lg-8 col-lg-offset-2">
+						<input type="button" class="btn btn-default" onclick="window.location.href = 'GestionUsuarios/AgregarUsuario.php';" value="Ingresar Usuario">
+					</div>
+		        </div>
+		    </div>
+    	</section>
+    	<footer>
+
+	        <div class="container text-center">
+		        <?php
+					if ( $_SESSION['nombre']) {
+			    		echo "Has iniciado sesion como: ".$_SESSION['nombre']."";
+			    		//echo "<a href='CerrarSesion.php'>Cerrar sesion</a>";
 					}
 				?>
-			</table>
-		</div>
-		<a href="AgregarUsuario.php">Agregar Tutor</a>
-		<a href="javascript:window.history.back();">&laquo; Volver atras</a>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script type="text/javascript" src="../../recursos/bootstrap/js/bootstrap.js"></script>
-	  	<script type="text/javascript" src="../../recursos/js/main.js"></script>
-		<script type="text/javascript" src="../../recursos/js/jquery.fullpage.js"></script>  
+	            <p>Copyright &copy; UNED-MELILLA</p>
+	        </div>
+	    </footer>
+
+	    <script src="../../Recursos/js/jquery.js"></script>
+	    <script src="../../Recursos/js/bootstrap.min.js"></script>
+		<script src="../../Recursos/js/jquery.easing.min.js"></script>
+	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+		<script src="../../Recursos/js/grayscale.js"></script>
 	</body>
 </html>
