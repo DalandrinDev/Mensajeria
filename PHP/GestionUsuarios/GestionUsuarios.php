@@ -6,20 +6,20 @@
 <html>
 	<head>
 		<script language="JavaScript">
-			function EliminarUsuario(claveusuarios) {
+			function EliminarUsuario(idusuario) {
 				var agree=confirm("¿Quieres eliminar este usuario?");
-				if (agree) {window.location="EliminarUsuario.php"}
+				if (agree) {window.location="EliminarUsuario.php?id="+idusuario; }
 			}
 
-			function ModificarUsuario(claveusuarios) {
+			function ModificarUsuario(idusuario) {
 				var agree= confirm("¿Quieres modificar este usuario?");
-				if (agree) {window.location="ModificarUsuario.php"}
+				if (agree) {window.location="ModificarUsuario.php?id="+idusuario; }
 			}
 		</script>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Mensajeria - Home</title>
+		<title>Mensajeria - Usuarios</title>
 
 		<!-- Bootstrap Core CSS -->
 	    <link href="../../Recursos/css/bootstrap.min.css" rel="stylesheet">
@@ -73,7 +73,7 @@
 	            
 	        </div>
 	    </nav>
-	    <section id="usuarios" class="container content-section text-center">
+	    <section id="usuario" class="container content-section text-center">
 	    	<div class="seccion-usuario">
 		        <div class="row">
 		            <div class="col-lg-8 col-lg-offset-2">
@@ -91,20 +91,20 @@
 							</thead>
 
 							<?php
-								$query = "SELECT * FROM usuarios";
+								$query = "SELECT * FROM usuario";
 								$result = mysqli_query($link, $query);
 								/*Este bucle hace que por cada registro de la consulta se almacenen los datos en la variable $registro
 								y los coloque en la tabla que hemos creado anteriormente*/
 								while ($registro = mysqli_fetch_array($result)) {
 									echo '<tbody>';
 										echo '<tr>';
-											echo '<td>'.$_SESSION['idusuarios']=$registro['claveusuarios'].'</td>';
+											echo '<td>'.$registro['idusuario'].'</td>';
 											echo '<td>'.$registro['nombre'].'</td>';
 											echo '<td>'.$registro['apellidos'].'</td>';
 											echo '<td>'.$registro['contrasena'].'</td>';
 											//Estos son los dos botones que al pulsar sobre ellos activan las funciones de JavaScript de arriba
-											echo '<td>'.'<input type="button" class="btn btn-danger" onclick="EliminarUsuario()" value="Eliminar Usuario">'.'</td>';
-											echo '<td>'.'<input type="button" class="btn btn-warning" onclick="ModificarUsuario()" value="Modificar Usuario">'.'</td>';
+											echo '<td>'.'<input type="button" class="btn btn-warning" id='.$registro["idusuario"].' onclick="ModificarUsuario(this.id)" value="Modificar Tutor">'.'</td>';
+											echo '<td>'.'<input type="button" class="btn btn-danger" id='.$registro["idusuario"].' onclick="EliminarUsuario(this.id)" value="Eliminar Tutor">'.'</td>';
 										echo '</tr>';
 									echo '</tbody>';
 								}
@@ -112,7 +112,7 @@
 						</table>
 					</div>
 					<div class="col-lg-8 col-lg-offset-2">
-						<input type="button" class="btn btn-default" onclick="window.location.href = 'GestionUsuarios/AgregarUsuario.php';" value="Ingresar Usuario">
+						<input type="button" class="btn btn-default" onclick="window.location.href = 'AgregarUsuario.php';" value="Ingresar Usuario">
 					</div>
 		        </div>
 		    </div>

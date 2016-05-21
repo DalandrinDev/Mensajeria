@@ -1,3 +1,4 @@
+<!--Este archivo no sirve, de momento-->
 <?php
 	include 'conectar.php';
 	session_start();

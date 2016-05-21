@@ -4,7 +4,7 @@
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellidos'];
     $contrasena = md5($_POST['contrasena']);
-	$resultado="INSERT INTO usuarios VALUES(NULL, '$nombre', '$apellido', '$contrasena')";
+	$resultado="INSERT INTO usuario VALUES(NULL, '$nombre', '$apellido', '$contrasena')";
 	$insertar = mysqli_query($link, $resultado);
-	header("location: ../home.php");
+	header("location: GestionUsuarios.php");
 ?>

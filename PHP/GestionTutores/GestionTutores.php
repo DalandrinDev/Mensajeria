@@ -6,14 +6,13 @@
 <html>
 	<head>
 		<script language="JavaScript">
-			function EliminarTutor(clavetutores) {
-				var agree=confirm("¿Quieres eleminar este tutor?");
-				if (agree) {window.location="GestionTutores/EliminarTutor.php";}
-			}
-
-			function ModificarTutor(clavetutores) {
+			function ModificarTutor(idtutor) {
 				var agree= confirm("¿Quieres modificar este tutor?");
-				if (agree) {window.location="GestionTutores/ModificarTutor.php"; }
+				if (agree) {window.location="ModificarTutor.php?id="+idtutor; }
+			}
+			function EliminarTutor(idtutor) {
+				var agree=confirm("¿Quieres eliminar este tutor?");
+				if (agree) {window.location="EliminarTutor.php?id="+idtutor; }
 			}
 		</script>
 		<meta charset="UTF-8">
@@ -34,8 +33,6 @@
 	</head>
 
 	<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-		<!-- Navigation -->
 	    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 	        <div class="container">
 	            <div class="navbar-header">
@@ -46,8 +43,6 @@
 	                    <span class="glyphicon glyphicon-envelope"></span><span class="light">Mensajeria</span>
 	                </a>
 	            </div>
-
-	            <!-- Collect the nav links, forms, and other content for toggling -->
 	            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 	                <ul class="nav navbar-nav">
 	                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
@@ -70,8 +65,7 @@
 						</li>
 	                </ul>
 	            </div>
-	            
-	        </div>
+            </div>
 	    </nav>
 	    <section id="tutores" class="container content-section text-center">
 	    	<div class="seccion-usuario">
@@ -92,21 +86,21 @@
 							</thead>
 
 							<?php
-								$query = "SELECT * FROM tutores";
+								$query ="SELECT * FROM tutor";
 								$result = mysqli_query($link, $query);
 								/*Este bucle hace que por cada registro de la consulta se almacenen los datos en la variable $registro
 								y los coloque en la tabla que hemos creado anteriormente*/
 								while ($registro = mysqli_fetch_array($result)) {
 									echo '<tbody>';
 										echo '<tr>';
-											echo '<td width="150">'.$_SESSION['idtutores']=$registro['clavetutores'].'</td>';
-											echo '<td width="150">'.$_SESSION['nombretutor']=$registro['nombre'].'</td>';
-											echo '<td width="150">'.$registro['apellidos'].'</td>';
-											echo '<td width="150">'.$registro['alias'].'</td>';
-											echo '<td width="150">'.$registro['facultad'].'</td>';
+											echo '<td>'.$registro['idtutor'].'</td>';
+											echo '<td>'.$registro['nombre'].'</td>';
+											echo '<td>'.$registro['apellidos'].'</td>';
+											echo '<td>'.$registro['alias'].'</td>';
+											echo '<td>'.$registro['idfacultad'].'</td>';
 											//Estos son los dos botones que al pulsar sobre ellos activan las funciones de JavaScript de arriba
-											echo '<td>'.'<input type="button" class="btn btn-danger" onclick="EliminarUsuario()" value="Eliminar Usuario">'.'</td>';
-											echo '<td>'.'<input type="button" class="btn btn-warning" onclick="ModificarUsuario()" value="Modificar Usuario">'.'</td>';
+											echo '<td>'.'<input type="button" class="btn btn-warning" id='.$registro["idtutor"].' onclick="ModificarTutor(this.id)" value="Modificar Tutor">'.'</td>';
+											echo '<td>'.'<input type="button" class="btn btn-danger" id='.$registro["idtutor"].' onclick="EliminarTutor(this.id)" value="Eliminar Tutor">'.'</td>';
 										echo '</tr>';
 									echo '</tbody>';
 								}
@@ -120,19 +114,16 @@
 		    </div>
     	</section>
     	<footer>
-
-	        <div class="container text-center">
+			<div class="container text-center">
 		        <?php
 					if ( $_SESSION['nombre']) {
 			    		echo "Has iniciado sesion como: ".$_SESSION['nombre']."";
-			    		//echo "<a href='CerrarSesion.php'>Cerrar sesion</a>";
-					}
+		    		}
 				?>
 	            <p>Copyright &copy; UNED-MELILLA</p>
 	        </div>
 	    </footer>
-
-	    <script src="../../Recursos/js/jquery.js"></script>
+		<script src="../../Recursos/js/jquery.js"></script>
 	    <script src="../../Recursos/js/bootstrap.min.js"></script>
 		<script src="../../Recursos/js/jquery.easing.min.js"></script>
 	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>

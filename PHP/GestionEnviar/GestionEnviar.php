@@ -6,14 +6,14 @@
 <html>
 	<head>
 		<script language="JavaScript">
-			function EliminarUsuario(claveusuarios) {
-				var agree=confirm("¿Quieres eliminar este usuario?");
-				if (agree) {window.location="EliminarUsuario.php"}
+			function VerMensaje(idenviar) {
+				var agree=confirm("¿Quieres ver información de este mensaje?");
+				if (agree) {window.location="VerMensaje.php?id="+idenviar; }
 			}
 
-			function ModificarUsuario(claveusuarios) {
-				var agree= confirm("¿Quieres modificar este usuario?");
-				if (agree) {window.location="ModificarUsuario.php"}
+			function ReutilizarMensaje(idenviar) {
+				var agree= confirm("¿Quieres reutilizar este mensaje?");
+				if (agree) {window.location="ReutilizarMensaje.php?id="+idenviar; }
 			}
 		</script>
 		<meta charset="UTF-8">
@@ -78,31 +78,33 @@
 		        <div class="row">
 		            <div class="col-lg-8 col-lg-offset-2">
 		                <h2>Lista de mensajes</h2>
-	                	<input type="button" class="btn btn-default" onclick="window.location.href = '../GestionMensajes/Mensaje.php';" value="Enviar Nuevo Mensaje">
+	                	<input type="button" class="btn btn-default" onclick="window.location.href = 'Mensaje.php';" value="Enviar Nuevo Mensaje">
 						<table class="table">
 							<thead>
 								<tr>
 									<th>ID</th>
-									<th>Texto</th>
+									<th>Mensaje</th>
 									<th>Fecha</th>
+									<th>Tutor</th>
 									<th>Autor</th>
 									<th>Enviado</th>
-									<th>Ver</th>
 								</tr>
 							</thead>
 
 							<?php
 								include '../conectar.php';
-								$query = "SELECT * FROM enviados";
+								$query = "SELECT * FROM enviar";
 								$result = mysqli_query($link, $query);
 								while ($registro = mysqli_fetch_array($result)) {
 									echo '<tr>';
-										echo '<td width="150">'.$registro['claveenvio'].'</td>';
-										echo '<td width="150">'.$registro['fechaenvio'].'</td>';
-										echo '<td width="150">'.$registro['clavemensajes'].'</td>';
-										echo '<td width="150">'.$registro['clavetutores'].'</td>';
-										echo '<td width="150">'.$registro['enviado'].'</td>';
-										echo '<td width="150">'.$registro['autor'].'</td>';
+										echo '<td>'.$registro['idenviar'].'</td>';
+										echo '<td>'.$registro['texto'].'</td>';
+										echo '<td>'.$registro['fechaenvio'].'</td>';
+										echo '<td>'.$registro['idtutor'].'</td>';
+										echo '<td>'.$registro['autor'].'</td>';
+										echo '<td>'.$registro['enviado'].'</td>';
+										echo '<td>'.'<input type="button" class="btn btn-default" id='.$registro["idenviar"].' onclick="VerMensaje(this.id)" value="Ver Mensaje">'.'</td>';
+										echo '<td>'.'<input type="button" class="btn btn-warning" id='.$registro["idenviar"].' onclick="ReutilizarMensaje(this.id)" value="Reutilizar Mensaje">'.'</td>';
 									echo '</tr>';
 								}
 							?>
@@ -112,8 +114,7 @@
 		    </div>
     	</section>
     	<footer>
-
-	        <div class="container text-center">
+			<div class="container text-center">
 		        <?php
 					if ( $_SESSION['nombre']) {
 			    		echo "Has iniciado sesion como: ".$_SESSION['nombre']."";
@@ -123,8 +124,7 @@
 	            <p>Copyright &copy; UNED-MELILLA</p>
 	        </div>
 	    </footer>
-
-	    <script src="../../Recursos/js/jquery.js"></script>
+		<script src="../../Recursos/js/jquery.js"></script>
 	    <script src="../../Recursos/js/bootstrap.min.js"></script>
 		<script src="../../Recursos/js/jquery.easing.min.js"></script>
 	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>

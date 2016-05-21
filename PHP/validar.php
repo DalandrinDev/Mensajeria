@@ -10,7 +10,7 @@
         exit();
     }
 
-    $resultado = mysqli_query($link, "SELECT * FROM usuarios WHERE nombre='" . $nombre . "'");
+    $resultado = mysqli_query($link, "SELECT * FROM usuario WHERE nombre='" . $nombre . "'");
     $numrows = mysqli_num_rows($resultado);
 
     //Si la consulta devuelve algo, se mete dentro de la condición

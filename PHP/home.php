@@ -36,12 +36,9 @@
 	                    <span class="glyphicon glyphicon-envelope"></span><span class="light">Mensajeria</span>
 	                </a>
 	            </div>
-
-
-	            <!-- Collect the nav links, forms, and other content for toggling -->
+				<!-- Collect the nav links, forms, and other content for toggling -->
 	            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 	                <ul class="nav navbar-nav">
-	                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 	                    <li class="hidden">
 	                        <a href="#page-top"></a>
 	                    </li>
@@ -56,8 +53,6 @@
 					        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sistema</a>
 					        <ul class="dropdown-menu">
 					          <li><a href="GestionUsuarios/GestionUsuarios.php">Usuarios</a></li>
-					          <li><a href="#">Opción 1</a></li>
-					          <li><a href="#">Opción 2</a></li>
 					        </ul>
 						</li>
 	                </ul>
