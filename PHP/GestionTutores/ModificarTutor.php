@@ -1,5 +1,10 @@
 <!--Este archivo se encarga de guardar el formulario que habrá que rellenar para que modificar los datos del tutor-->
 <!DOCTYPE html>
+<?php
+	include '../conectar.php';
+	session_start();
+	$_SESSION['idmodificar']=$_GET['id'];
+?>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -19,7 +24,7 @@
 	    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<form role="form" method="post" method="get" action="EnviarModificarTutor.php">
+		<form role="form" method="POST" action="EnviarModificarTutor.php">
 			<div class="form-group">
 				<label for="nombre">Nombre:</label>
 				<input type="text" class="form-control" name="nombre" placeholder="Introduce el nombre" pattern="^[A-Za-z0-9_-]{1,15}$" required>
@@ -36,8 +41,6 @@
 				<label for="facultad">Facultad:</label>
 				<select class='form-control' name="facultad">
 					<?php
-						include '../conectar.php';
-						$clavetutor=$_GET['id'];
 						$query ="SELECT * FROM facultad";
 						$result = mysqli_query($link, $query);
 						while ($registro = mysqli_fetch_array($result)) {

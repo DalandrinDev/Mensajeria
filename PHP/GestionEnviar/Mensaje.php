@@ -20,8 +20,8 @@
 	</head>
 	<body>
 		<div class="container content-section text-center">
-			<form role="form" name="mensaje" method="post" action="EnviarMensaje.php">
-				<div class="form-signin">
+			<form  role="form" method="post" action="EnviarMensaje.php">
+				<div class=class="form-group">
 					<h2 class="form-signin-heading">Escribe el mensaje</h2>
 					<?php
 						include '../conectar.php';
@@ -30,18 +30,19 @@
 					?>
 					<textarea class="form-control" rows="5" id="comment" name="texto"></textarea>
 				</div>
-				<div class="form-group">
-					<label for="contacto">Selecciona los Tutores:</label>
-					<select class='form-control' name="contacto">
+				<div class="form-group"><br>
+					<h4 for="contacto">Selecciona los Tutores:</h4>
+					<div class="checkbox">
 						<?php
-							$query ="SELECT * FROM enviar";
-							echo "$query";
+							$query ="SELECT * FROM tutor";
 							$result = mysqli_query($link, $query);
 							while ($registro = mysqli_fetch_array($result)) {
-									echo "<option value='".$registro['idtutor']."'>".$registro['idtutor']."</option>";
+									echo "<div class='checkbox'>";
+  										echo "<label><input type='checkbox' name='contacto' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
+									echo "</div>";
 							}
 						?>
-					</select>
+					</div>
 				</div>
 			<button type="submit" class="btn btn-default">Enviar</button>
 			</form>
