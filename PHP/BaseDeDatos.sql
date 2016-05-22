@@ -47,6 +47,13 @@ CREATE TABLE enviar (
 
 #Este es el unico registro que tendra la base de datos, guarda al SuperAdmin y la contraseña.
 INSERT INTO usuario VALUES(NULL,'admin','','uned');
+INSERT INTO usuario VALUES(NULL,'daniel','Ramirez Sanchez','sirdan');
+
+INSERT INTO tutor (NULL,'Fran','Molsan','@Saitama','2');
+INSERT INTO tutor (NULL,'Ale','Oses','@EgoMaster','3');
+INSERT INTO tutor (NULL,'Sergio','Lucena','@Guantesusio','1');
+INSERT INTO tutor (NULL,'Maria','Second Life','@MuFriki','4');
+INSERT INTO tutor (NULL,'Borja','Valiente Futbolin','@Sarcofago','1');
 
 INSERT INTO facultad VALUES(NULL, 'Ciencias e Ingenierias');
 INSERT INTO facultad VALUES(NULL, 'Ciencias Sociales');
