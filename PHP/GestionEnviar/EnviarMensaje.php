@@ -1,11 +1,19 @@
 <?php
 	include '../conectar.php';
+	session_start();
 	$mensaje=$_POST['texto'];
 	$fecha = date('d/m/Y H:i');
-	$contacto = $_POST['contacto'];
-	$envios="INSERT INTO enviar VALUES(NULL, '$mensaje', '$fecha', '{$_SESSION['nombre']}', '$contacto', 'No')";
-	$insertar = mysqli_query($link, $envios);
-	$pyton = exec("python ../script.py /var/www/html/PHP/script.py");
-	echo "$pyton";
-	//header("location: GestionEnviar.php");
+
+	$enviar="INSERT INTO mensaje VALUES(NULL, '$mensaje', '{$_SESSION['nombre']}')";
+	$insertar = mysqli_query($link, $enviar);
+	
+	
+	foreach($_POST as $contacto) {
+		if ($contacto != $mensaje) {
+	 		$envios="INSERT INTO enviar VALUES(NULL, '$fecha', '$contacto', 'No')";
+			$insercion = mysqli_query($link, $envios);
+	//$pyton = exec("python ../script.py /var/www/html/PHP/script.py");
+		}
+	}
+	header("location: GestionEnviar.php");
 ?>

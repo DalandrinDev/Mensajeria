@@ -6,9 +6,9 @@
 <html>
 	<head>
 		<script language="JavaScript">
-			function VerMensaje(idenviar) {
+			function VerMensaje(idmensaje) {
 				var agree=confirm("¿Quieres ver información de este mensaje?");
-				if (agree) {window.location="VerMensaje.php?id="+idenviar; }
+				if (agree) {window.location="VerMensaje.php?id="+idmensaje; }
 			}
 
 			function ReutilizarMensaje(idenviar) {
@@ -84,27 +84,23 @@
 								<tr>
 									<th>ID</th>
 									<th>Mensaje</th>
-									<th>Fecha</th>
-									<th>Tutor</th>
 									<th>Autor</th>
-									<th>Enviado</th>
+									<th>Ver Mensaje</th>
+									<th>Reutilizar Mensaje</th>
 								</tr>
 							</thead>
 
 							<?php
 								include '../conectar.php';
-								$query = "SELECT * FROM enviar";
+								$query = "SELECT * FROM mensaje";
 								$result = mysqli_query($link, $query);
 								while ($registro = mysqli_fetch_array($result)) {
 									echo '<tr>';
-										echo '<td>'.$registro['idenviar'].'</td>';
+										echo '<td>'.$registro['idmensaje'].'</td>';
 										echo '<td>'.$registro['texto'].'</td>';
-										echo '<td>'.$registro['fechaenvio'].'</td>';
-										echo '<td>'.$registro['idtutor'].'</td>';
 										echo '<td>'.$registro['autor'].'</td>';
-										echo '<td>'.$registro['enviado'].'</td>';
-										echo '<td>'.'<input type="button" class="btn btn-default" id='.$registro["idenviar"].' onclick="VerMensaje(this.id)" value="Ver Mensaje">'.'</td>';
-										echo '<td>'.'<input type="button" class="btn btn-warning" id='.$registro["idenviar"].' onclick="ReutilizarMensaje(this.id)" value="Reutilizar Mensaje">'.'</td>';
+										echo '<td>'.'<input type="button" class="btn btn-default" id='.$registro["idmensaje"].' onclick="VerMensaje(this.id)" value="Ver Mensaje">'.'</td>';
+										echo '<td>'.'<input type="button" class="btn btn-warning" id='.$registro["idmensaje"].' onclick="ReutilizarMensaje(this.id)" value="Reutilizar Mensaje">'.'</td>';
 									echo '</tr>';
 								}
 							?>

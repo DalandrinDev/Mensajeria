@@ -30,6 +30,12 @@ CREATE TABLE usuario (
 	contrasena VARCHAR(4) NOT NULL
 );
 
+CREATE TABLE mensaje (
+	idmensaje INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	texto VARCHAR(200) NOT NULL,
+	autor VARCHAR(15) NOT NULL 
+);
+
 #SELECT autor FROM enviar WHERE idmensaje = (SELECT idmensaje FROM mensaje WHERE idmensaje = 'iddelmensajequequieras');
 
 #La tabla enviados almacenará la orden de envio del mensaje, en él se guarda la ID del envío, la fecha, la ID del mensaje
@@ -37,23 +43,15 @@ CREATE TABLE usuario (
 #que ha escrito el mensaje
 CREATE TABLE enviar (
 	idenviar INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	texto VARCHAR(140) NOT NULL,
-	fechaenvio VARCHAR(10) NOT NULL, 
-	autor VARCHAR (15) NOT NULL,
+	fechaenvio VARCHAR(10) NOT NULL,
 	idtutor INT NOT NULL,
-	enviado SET('si', 'no') DEFAULT 'no',
+	enviado SET('Si', 'no') DEFAULT 'No',
 	FOREIGN KEY (idtutor) REFERENCES tutor(idtutor)
+	
 ); 
 
 #Este es el unico registro que tendra la base de datos, guarda al SuperAdmin y la contraseña.
 INSERT INTO usuario VALUES(NULL,'admin','','uned');
-INSERT INTO usuario VALUES(NULL,'daniel','Ramirez Sanchez','sirdan');
-
-INSERT INTO tutor (NULL,'Fran','Molsan','@Saitama','2');
-INSERT INTO tutor (NULL,'Ale','Oses','@EgoMaster','3');
-INSERT INTO tutor (NULL,'Sergio','Lucena','@Guantesusio','1');
-INSERT INTO tutor (NULL,'Maria','Second Life','@MuFriki','4');
-INSERT INTO tutor (NULL,'Borja','Valiente Futbolin','@Sarcofago','1');
 
 INSERT INTO facultad VALUES(NULL, 'Ciencias e Ingenierias');
 INSERT INTO facultad VALUES(NULL, 'Ciencias Sociales');

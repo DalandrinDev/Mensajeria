@@ -20,40 +20,50 @@
 
 	<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 	    <section id="usuarios" class="container content-section text-center">
-	    	<div class="panel-group">
-		    	<div class="panel panel-default">
-	      			<div class="panel-heading">Información del mensaje</div>
-		      			<?php
+	    	<div class="row">
+	            <div class="col-lg-8 col-lg-offset-2">
+	                <h2>Lista de mensajes</h2>
+                	<input type="button" class="btn btn-default" onclick="window.location.href = 'Mensaje.php';" value="Enviar Nuevo Mensaje">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Fecha</th>
+								<th>ID Mensaje</th>
+								<th>Texto</th>
+								<th>ID Tutor</th>
+								<th>Autor</th>
+								<th>Enviado</th>
+							</tr>
+						</thead>
+						<?php
 	      					include '../conectar.php';
-							$query = "SELECT * FROM enviar";
+	      					session_start();
+	      					$clavemensaje= $_GET['id'];
+							$query = "SELECT  idenviar, fechaenvio, texto, idtutor, autor, enviado FROM mensaje INNER JOIN enviar ON '$clavemensaje' = idenviar";
+							echo "$query";
 							$result = mysqli_query($link, $query);
 							while ($registro = mysqli_fetch_array($result)) {
 								echo '<div class="panel-body">';
-								echo '<tr>';
-								echo '<td>'.$registro['idenviar'].'</td>';
-								echo '<td>'.$registro['texto'].'</td>';
-								echo '<td>'.$registro['fechaenvio'].'</td>';
-								echo '<td>'.$registro['idtutor'].'</td>';
-								echo '<td>'.$registro['autor'].'</td>';
-								echo '<td>'.$registro['enviado'].'</td>';
-								echo '<tr>';
+									echo '<tr>';
+										echo '<td>'.$registro['idenviar'].'</td>';
+										echo '<td>'.$registro['fechaenvio'].'</td>';
+										echo '<td>'.$registro['texto'].'</td>';
+										echo '<td>'.$registro['idtutor'].'</td>';
+										echo '<td>'.$registro['autor'].'</td>';
+										echo '<td>'.$registro['enviado'].'</td>';
+									echo '<tr>';
 								echo '</div>';
 							}
 						?>
-		      		</div>
-    			</div>
-    		</div>
-    	</section>
-    	<footer>
-			<div class="container text-center">
-		        <?php
-					if ( $_SESSION['nombre']) {
-			    		echo "Has iniciado sesion como: ".$_SESSION['nombre']."";
-			    		//echo "<a href='CerrarSesion.php'>Cerrar sesion</a>";
-					}
-				?>
-	            <p>Copyright &copy; UNED-MELILLA</p>
+					</table>
+				</div>
 	        </div>
+		</section>
+		<footer>
+		    <div>
+		        <p>Copyright &copy; UNED-MELILLA</p>
+		    </div>
 	    </footer>
 		<script src="../../Recursos/js/jquery.js"></script>
 	    <script src="../../Recursos/js/bootstrap.min.js"></script>

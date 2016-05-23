@@ -15,7 +15,7 @@
     $numrows = mysqli_num_rows($final);
 
     //Si la consulta devuelve algo, se mete dentro de la condición
-    if ($row = mysqli_fetch_array($resultado)) {
+    if ($row = mysqli_fetch_array($final)) {
         //Si la contraseña es correcta se mete dentro de la condición
         if ($row['contrasena'] == $contrasena) {
             //Inicia la sesión con el nombre del usuario logeado y te manda a home.php

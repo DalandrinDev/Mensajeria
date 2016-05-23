@@ -38,7 +38,7 @@
 							$result = mysqli_query($link, $query);
 							while ($registro = mysqli_fetch_array($result)) {
 									echo "<div class='checkbox'>";
-  										echo "<label><input type='checkbox' name='contacto' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
+  										echo "<label><input type='checkbox' name='contacto_".$registro['idtutor']."' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
 									echo "</div>";
 							}
 						?>
