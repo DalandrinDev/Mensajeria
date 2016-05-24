@@ -27,31 +27,33 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>ID</th>
-								<th>Fecha</th>
 								<th>ID Mensaje</th>
-								<th>Texto</th>
-								<th>ID Tutor</th>
 								<th>Autor</th>
+								<th>Texto</th>
 								<th>Enviado</th>
+								<th>Fecha</th>
+								<th>Id Enviar</th>
+								<th>Id Tutorr</th>
 							</tr>
 						</thead>
 						<?php
 	      					include '../conectar.php';
 	      					session_start();
 	      					$clavemensaje= $_GET['id'];
-							$query = "SELECT  idenviar, fechaenvio, texto, idtutor, autor, enviado FROM mensaje INNER JOIN enviar ON '$clavemensaje' = idenviar";
+							//$query = "SELECT  idenviar, fechaenvio, texto, idtutor, autor, enviado FROM mensaje INNER JOIN enviar ON 'mensaje.idmensaje' = 'enviar.idmensaje'";
+							$query = "SELECT mensaje.idmensaje, autor, texto, enviado, fechaenvio, idenviar, idtutor FROM mensaje INNER JOIN enviar ON mensaje.idmensaje = enviar.idmensaje";
 							echo "$query";
 							$result = mysqli_query($link, $query);
 							while ($registro = mysqli_fetch_array($result)) {
 								echo '<div class="panel-body">';
 									echo '<tr>';
-										echo '<td>'.$registro['idenviar'].'</td>';
-										echo '<td>'.$registro['fechaenvio'].'</td>';
-										echo '<td>'.$registro['texto'].'</td>';
-										echo '<td>'.$registro['idtutor'].'</td>';
+										echo '<td>'.$registro['idmensaje'].'</td>';
 										echo '<td>'.$registro['autor'].'</td>';
+										echo '<td>'.$registro['texto'].'</td>';
 										echo '<td>'.$registro['enviado'].'</td>';
+										echo '<td>'.$registro['fechaenvio'].'</td>';
+										echo '<td>'.$registro['idenviar'].'</td>';
+										echo '<td>'.$registro['idtutor'].'</td>';
 									echo '<tr>';
 								echo '</div>';
 							}

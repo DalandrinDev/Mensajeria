@@ -24,7 +24,7 @@ CREATE TABLE tutor (
 #La tabla usuarios es la tabla donde se almacenarán los administradores, tendrán un ID, un nombre, dos apellidos y una
 #contraseña, esta estará encriptada para proteger esos datos
 CREATE TABLE usuario (
-	idusuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+	idusuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nombre VARCHAR(10) NOT NULL,
 	apellidos VARCHAR(40) NOT NULL,
 	contrasena VARCHAR(4) NOT NULL
@@ -44,11 +44,13 @@ CREATE TABLE mensaje (
 CREATE TABLE enviar (
 	idenviar INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	fechaenvio VARCHAR(10) NOT NULL,
+	idmensaje INT NOT NULL,
 	idtutor INT NOT NULL,
 	enviado SET('Si', 'no') DEFAULT 'No',
-	FOREIGN KEY (idtutor) REFERENCES tutor(idtutor)
-	
-); 
+	FOREIGN KEY (idtutor) REFERENCES tutor(idtutor),
+	FOREIGN KEY (idmensaje) REFERENCES mensaje(idmensaje)
+
+);
 
 #Este es el unico registro que tendra la base de datos, guarda al SuperAdmin y la contraseña.
 INSERT INTO usuario VALUES(NULL,'admin','','uned');

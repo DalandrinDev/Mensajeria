@@ -96,7 +96,7 @@
 								$result = mysqli_query($link, $query);
 								while ($registro = mysqli_fetch_array($result)) {
 									echo '<tr>';
-										echo '<td>'.$registro['idmensaje'].'</td>';
+										echo '<td>'. $_SESSION['clavemensaje']=$registro['idmensaje'].'</td>';
 										echo '<td>'.$registro['texto'].'</td>';
 										echo '<td>'.$registro['autor'].'</td>';
 										echo '<td>'.'<input type="button" class="btn btn-default" id='.$registro["idmensaje"].' onclick="VerMensaje(this.id)" value="Ver Mensaje">'.'</td>';
