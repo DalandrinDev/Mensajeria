@@ -1,23 +1,13 @@
 #!usr/bin/env
 import pexpect
 import time
-import MySQLdb
+import MySQLdb as mbd
 
 host = 'localhost'
 usuario = 'admin'
 clave = 'uned'
 basedatos = 'mensajeria'
-datos = [host, usuario, clave, basedatos]
-db = MySQLdb.connect(*datos)
-
-cursor =db.cursor()
-
-consulta = "SELECT alias FROM tutor WHERE alias = '@SirDan93'"
-cursor.execute(consulta)
-contacto = cursor.fetchall()
-print contacto
-
-mensaje = "Hola"
+con = mbd.connect(host, usuario, clave, basedatos)
 
 telegram = pexpect.spawn('/var/www/tg/bin/./telegram-cli /var/www/tg/tg-server.pub')
 telegram.expect('\r\n>', timeout=2)
@@ -27,7 +17,17 @@ telegram.sendline("contact_list")
 telegram.expect('\r\n>', timeout=2)
 time.sleep(2)
 
-telegram.sendline("msg "+contacto+""+mensaje)
-print ("Mensaje enviado a "+ contacto)
-
+cur = con.cursor(mbd.cursors.DictCursor)
+enviado = cur.execute("SELECT enviado FROM enviar WHERE enviado = 'no'")
+rowenviado = cur.fetchall()
+for row in rowenviado:
+	if row["enviado"] =='no':
+		cambio = cur.execute("UPDATE enviar SET enviado = 'si'")
+		con.commit()
+		with con:
+			cur.execute("SELECT texto, alias FROM mensaje INNER JOIN tutor WHERE enviar.mensaje_idmensaje = mensaje.idmensaje")
+			rows = cur.fetchall()
+			for row in rows:
+				telegram.sendline("msg "+row["alias"]+ " "+row["texto"])
+				print "Mensaje enviados con éxito"
 telegram.sendline("quit")

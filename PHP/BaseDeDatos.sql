@@ -30,7 +30,7 @@ CREATE TABLE usuario (
 	contrasena VARCHAR(4) NOT NULL
 );
 
-CREATE TABLE mensaje (
+CREATE TABLE mensaje ( #COSTUMER
 	idmensaje INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	texto VARCHAR(200) NOT NULL,
 	autor VARCHAR(15) NOT NULL 
@@ -41,14 +41,14 @@ CREATE TABLE mensaje (
 #La tabla enviados almacenará la orden de envio del mensaje, en él se guarda la ID del envío, la fecha, la ID del mensaje
 #que se quiere enviar, la ID del tutor al que hay que enviarle el mensaje, indicar si el mensaje se ha enviado, y el autor
 #que ha escrito el mensaje
-CREATE TABLE enviar (
+CREATE TABLE enviar ( #ORDERS
 	idenviar INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	mensaje_idmensaje INTEGER NOT NULL,
 	fechaenvio VARCHAR(10) NOT NULL,
-	idmensaje INT NOT NULL,
 	idtutor INT NOT NULL,
 	enviado SET('Si', 'no') DEFAULT 'No',
 	FOREIGN KEY (idtutor) REFERENCES tutor(idtutor),
-	FOREIGN KEY (idmensaje) REFERENCES mensaje(idmensaje)
+	FOREIGN KEY (mensaje_idmensaje) REFERENCES mensaje(idmensaje)
 
 );
 

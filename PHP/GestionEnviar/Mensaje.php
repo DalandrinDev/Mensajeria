@@ -1,7 +1,18 @@
 <!--Es un formulario donde se almacenará el mensaje y se enviará pormetodo POST a EnviarMensaje.php-->
 <!DOCTYPE html>
+<?php
+	include '../conectar.php';
+	session_start();
+	echo "<p>El mensaje será firmado por: {$_SESSION['nombre']}</p>";
+?>
 <html>
 	<head>
+	<script language="JavaScript">
+			function VerMensaje(idmensaje) {
+				var agree=confirm("¿Quieres ver información de este mensaje?");
+				if (agree) {window.location="EnviarMensaje.php?id="+idmensaje; }
+			}
+	</script>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,32 +31,35 @@
 	</head>
 	<body>
 		<div class="container content-section text-center">
-			<form  role="form" method="post" action="EnviarMensaje.php">
+			<?php
+			if (!$_POST) {
+			 
+			 ?>
+			<form  role="form" method="post" action="Mensaje.php">
 				<div class=class="form-group">
 					<h2 class="form-signin-heading">Escribe el mensaje</h2>
-					<?php
-						include '../conectar.php';
-						session_start();
-						echo "<p>El mensaje será firmado por: {$_SESSION['nombre']}</p>";
-					?>
+					
 					<textarea class="form-control" rows="5" id="comment" name="texto"></textarea>
 				</div>
-				<div class="form-group"><br>
-					<h4 for="contacto">Selecciona los Tutores:</h4>
-					<div class="checkbox">
-						<?php
-							$query ="SELECT * FROM tutor";
-							$result = mysqli_query($link, $query);
-							while ($registro = mysqli_fetch_array($result)) {
-									echo "<div class='checkbox'>";
-  										echo "<label><input type='checkbox' name='contacto_".$registro['idtutor']."' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
-									echo "</div>";
-							}
-						?>
-					</div>
-				</div>
-			<button type="submit" class="btn btn-default">Enviar</button>
+				<button type="submit" class="btn btn-default" id='.$registro["idmensaje"].' onclick="VerMensaje(this.id)" value="Enviar">Enviar</button>
 			</form>
+			<?php
+				}else{
+					$mensaje=$_POST['texto'];
+
+					$enviar="INSERT INTO mensaje VALUES(NULL, '$mensaje', '{$_SESSION['nombre']}')";
+					$insertar = mysqli_query($link, $enviar);
+					$query = "SELECT * FROM mensaje";
+					$result = mysqli_query($link, $query);
+					while ($registro = mysqli_fetch_array($result)) {
+						echo '<tr>';
+							echo '<td>'.$_SESSION['clavemensaje']=$registro['idmensaje'].'</td>';
+						echo '<tr>';
+					}
+
+					header("location: EnviarMensaje.php");
+				}
+			?>
 		</div>
 		<div class="col-lg-8 col-lg-offset-2">
 			<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
