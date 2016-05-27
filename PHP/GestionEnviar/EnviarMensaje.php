@@ -1,70 +1,30 @@
-<!--Es un formulario donde se almacenará el mensaje y se enviará pormetodo POST a EnviarMensaje.php-->
-<!DOCTYPE html>
 <?php
-	include '../conectar.php';
-	session_start();
-	echo "<p>El mensaje será firmado por: {$_SESSION['nombre']}</p>";
+	include '../conectar.php'; #Incluye el archivo conectar.php para establecer conexión con la base de datos.
+	include '../comprobar.php';
+	session_start(); #Inicia la sesión.
+	$mensaje=$_POST['texto']; #Variable almacenada por metodo POST
+	$fecha = date('Y/m/d H:i'); #Variable almacenada que rellena el campo con la fecha actual
+
+	//Hace el ingreso de datos en la tabla mensaje.
+	$enviar="INSERT INTO mensaje VALUES(NULL, '$mensaje', '{$_SESSION['nombre']}')";
+	$insertar = mysqli_query($link, $enviar); #Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
+
+	//Selecciona la id mayor en la tabla mensaje, para usarla luego en una consulta.
+	$consulta = "SELECT max(idmensaje) FROM mensaje";
+	$result = mysqli_query($link, $consulta); #Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
+
+	#Este bucle hace que por cada registro de la consulta se almacenen los datos en la variable $registro y los coloque en la tabla que hemos creado anteriormente.
+	while ($registro = mysqli_fetch_array($result)) {
+
+		//Cada metodo POST recogido en el formulario anterior lo convierte en la variable $contacto.
+		foreach($_POST as $contacto) {
+
+			if ($contacto != $mensaje) {# Con esta linea entramos en un condicional en el que no entrará el mismo contenido $mensaje que $contacto, así evitamos introducir el texto.
+				//Hace el ingreso de datos en la tabla enviar con los datos recogidos.
+		 		$envios="INSERT INTO enviar VALUES(NULL, '{$registro['max(idmensaje)']}', '$fecha', '', '$contacto', 'No')";
+				$insercion = mysqli_query($link, $envios); #Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
+			}
+		}
+	}		
+	header("location: GestionEnviar.php");#Te lleva GestionEnviar.php
 ?>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Mensajeria - Agregar Tutor</title>
-
-		<!-- Bootstrap Core CSS -->
-	    <link href="../../Recursos/css/bootstrap.min.css" rel="stylesheet">
-
-	    <!-- Custom CSS -->
-	    <link href="../../Recursos/css/grayscale.css" rel="stylesheet">
-
-	    <!-- Custom Fonts -->
-	    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-	    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-	</head>
-	<body>
-		<div class="container content-section text-center">
-			<?php
-			if (!$_POST) {
-			 
-			?>
-			<form  role="form" method="post" action="EnviarMensaje.php">
-			<div class="form-group"><br>
-				<h4 for="contacto">Selecciona los Tutores:</h4>
-				<div class="checkbox">
-					<?php
-							$query ="SELECT * FROM tutor";
-							$result = mysqli_query($link, $query);
-							while ($registro = mysqli_fetch_array($result)) {
-									echo "<div class='checkbox'>";
-											echo "<label><input type='checkbox' name='contacto_".$registro['idtutor']."' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
-									echo "</div>";
-							}
-					?>
-				</div>
-			</div>
-			<button type="submit" class="btn btn-default">Enviar</button>
-			</form>
-			<?php
-				}else{
-					$fecha = date('d/m/Y H:i');
-					foreach($_POST as $contacto) {
-					 	$envios="INSERT INTO enviar VALUES(NULL, '{$_SESSION['clavemensaje']}', '$fecha', '$contacto', 'No')";
-					 	echo "$envios";
-						$insercion = mysqli_query($link, $envios);
-					}
-	//$pyton = exec("python ../script.py /var/www/html/PHP/script.py");
-				}
-			?>
-		</div>
-		<div class="col-lg-8 col-lg-offset-2">
-			<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
-		</div>
-	    <script src="../../Recursos/js/jquery.js"></script>
-	    <script src="../../Recursos/js/bootstrap.min.js"></script>
-		<script src="../../Recursos/js/jquery.easing.min.js"></script>
-	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-		<script src="../../Recursos/js/grayscale.js"></script>
-	</body>
-</html>

@@ -1,0 +1,1 @@
+#La primera es la instalacion de python y la segunda dodne esta guardado el fichero, deberia estar en /var, y el ejecutar.sh /usr/bin/python /var/wwww/html/Mensaje/PHP/script.py 

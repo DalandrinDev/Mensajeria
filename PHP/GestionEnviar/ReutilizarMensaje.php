@@ -1,4 +1,4 @@
-<!--Archivo que se encarga de almacenar los datos para agregar a un nuevo tutor a la base de datos-->
+<!--No funciona-->
 <!DOCTYPE html>
 <?php
 	include '../conectar.php'; #Incluye el archivo conectar.php para establecer conexión con la base de datos.
@@ -10,7 +10,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Mensajeria - Agregar Tutor</title>
+		<title>Mensajeria - Reutilizar Mensaje</title>
 
 		<!-- A partir de aquí se hace la llamada a todos los archivos que usaremos en el CSS -->
 	    <link href="../../Recursos/css/bootstrap.min.css" rel="stylesheet">
@@ -25,44 +25,42 @@
 	</head>
 	<body>
 		<div class="container content-section text-center">
-			<!-- Aquí empieza el formulario -->
-			<form role="form" method="POST" action="EnviarAgregarTutor.php" class="col-md-4 col-md-offset-4">
-			<h3>Ingresa nuevo Tutor</h3>
-				<!-- Nombre del tutor -->
-				<div class="form-group">
-					<input type="text" class="form-control" name="nombre" placeholder="Introduce el nombre" pattern="^[A-Za-z0-9_-]{1,15}$" required>
-				</div>
-
-				<!-- Apellidos del tutor -->
-				<div class="form-group">
-					<input type="text" class="form-control" name="apellidos" placeholder="Introduce los apellidos" pattern="[a-zA-Zñ ]+[a-zA-Zñ]{1,15}" required>
-				</div>
-
-				<!-- Alias del tutor -->
-				<div class="form-group">
-					<input type="text" class="form-control" name="alias" placeholder="Introduce el alias de Telegram" pattern="^@[A-Za-z0-9_-]{1,15}$" required>
-				</div>
-
-				<!-- Facultad del tutor -->
-				<div class="form-group">
-					<select class='form-control' name="facultad">
+			<article class="row">
+				<!-- Aquí empieza el formulario -->
+				<form role="form" method="POST" action="EnviarReutilizarMensaje.php">
+					<!-- Esta es la parte donde se escribe el mensaje a enviar -->
+					<div class="col-xs-12 col-sm-9 col-md-6">
+						<h2>Mensaje</h2>
+						<!-- Esta linea indicará en todo momento el Autor del mensaje -->
 						<?php
-							$query ="SELECT * FROM facultad"; //Selecciona todas las tablas de la tabla facultad
-							$result = mysqli_query($link, $query); //Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
-
-							//Este bucle permite recorrer la consulta y que muestre cada elemento, para poder seleccionarlo.
-							while ($registro = mysqli_fetch_array($result)) {
-									echo "<option value='".$registro['idfacultad']."'>".$registro['facultad']."</option>";
-							}
+							echo "<p>El mensaje será firmado por: {$_SESSION['nombre']}</p>";
 						?>
-					</select>
-				</div>
-				<button type="submit" class="btn btn-default">Enviar</button>
-				<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
-			</form>
-		</div>
+						<!--<textarea class="form-control" rows="5" id="comment" name="texto"></textarea>-->
+						<!-- Botones de navegación -->
+						<button type="submit" class="btn btn-default">Enviar</button>
+						<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
+					</div>
+					<!-- Esta es la parte donde se selecciona a los tutores -->
+					<div class="col-xs-12 col-sm-9 col-md-6">
+						<h3>Selecciona los Tutores:</h3>
+						<div class="checkbox">
+							<?php
+								$_SESSION['clavemensaje']=$_GET['id'];
+								$query ="SELECT * FROM tutor"; #Selecciona a todos los tutores.
+								$result = mysqli_query($link, $query); #Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
 
-		<!-- Footer del HTML -->
+								#Este bucle hace que por cada registro de la consulta se almacenen los datos en la variable $registro y los coloque en la tabla que hemos creado anteriormente.
+								while ($registro = mysqli_fetch_array($result)) {
+										echo "<div class='checkbox'>";
+	  										echo "<label><input type='checkbox' name='contacto_".$registro['idtutor']."' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
+										echo "</div>";
+								}
+							?>
+						</div>
+					</div>
+				</form>
+			</article>
+		</div>
 	    <footer>
 			<div class="container text-center">
 		        <?php
