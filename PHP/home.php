@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <?php
 	include 'conectar.php'; #Incluye el archivo conectar.php para establecer conexión con la base de datos.
-	session_start(); #Inicia la sesión.
 	include 'comprobar.php';
 ?>
 <html>

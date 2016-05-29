@@ -1,6 +1,8 @@
 <!--Este archivo no sirve, de momento-->
 <?php
-	if (! empty($_SESSION['nombre'])) {
+	session_start();
+	if (isset($_SESSION['nombre'])) {
+		
 	}else{
 		header("Location: index.html");
 	}
