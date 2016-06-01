@@ -60,10 +60,11 @@ for mne in noenviados: #Por cada elemento de los resultados obtenidos sucederá 
 	#-----Envia los datos-----
 
 	telegram.sendline("msg "+tutor+" "+texto) #Envia el mensaje a los usuarios y el texto en las variables almacenadas.
-	time.sleep(1) #Este segundo de espera permite que todos los mensajes llegen a sus destinatarios, así el programa no se colapsa.
 	consulta = "UPDATE enviar SET enviado = 'si' WHERE idenviar = "+str(mne["idenviar"]) #Est consulta va a cambiar el estado de enviado de 'no' a sí al usuario que haya enviado el mensaje.
 	cur.execute(consulta) #Ejecuta la consulta anterior.
 	con.commit() #Permite actualizar la base de datos con la útima consulta.
+	time.sleep(1) #Este segundo de espera permite que todos los mensajes llegen a sus destinatarios, así el programa no se colapsa.
+	
 
 #-----Ahora cerramos Telegram, el cursor, y la conexión a la base de datos-----
 

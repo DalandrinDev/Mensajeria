@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <?php
-	include '../conectar.php'; #Incluye el archivo conectar.php para establecer conexión con la base de datos.
-	session_start(); #Inicia la sesión.
-	include '../comprobar.php';
+	include '../modulos/conectar.php';
+	include '../modulos/comprobar.php';
 ?>
 <html>
 	<head>
@@ -15,47 +14,32 @@
 				if (agree) {window.location="ReutilizarMensaje.php?id="+idenviar; }
 			}
 		</script>
-		<meta charset="UTF-8">
-		<title>Mensajeria - Enviar</title>
-
-		<!-- A partir de aquí se hace la llamada a todos los archivos que usaremos en el CSS -->
-	    <link href="../../Recursos/css/bootstrap.css" rel="stylesheet">
-
-	    <!-- El CSS que usaremos -->
-	    <link href="../../Recursos/css/grayscale.css" rel="stylesheet">
+		<?php
+			include '../modulos/head.php';
+		?>
 	</head>
 
-	<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
-		<!-- La barra de navegacion -->
-	    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-	        <div class="container">
-
-	        	<!-- La parte izquierda de la página con el glyphicon del sobre -->
-	            <div class="navbar-header">
-	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-	                    <i class="fa fa-bars"></i>
-	                </button>
-	                <a class="navbar-brand page-scroll" href="#page-top">
-	                    <span class="glyphicon glyphicon-envelope"></span><span class="light">Mensajeria</span>
-	                </a>
-	            </div>
-
-				<!-- Los enlaces al resto de secciones de la aplicación web -->
-	            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-	                <ul class="nav navbar-nav">
-	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
-	                    <li class="hidden"><a href="../home.php"></a></li>
+	<body>
+	    <nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#boton">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				<a class="navbar-brand light" href="../home.php"><span class="glyphicon glyphicon-envelope"></span>Mensajeria</a>
+				</div>
+				<div class="collapse navbar-collapse navbar-right" id="boton">
+					<ul class="nav navbar-nav">
 						<li><a href="#">Mensajes</a></li>
 						<li><a href="../GestionTutores/GestionTutores.php">Tutores</a></li>
-						<li class="dropdown">
-						<li><a href="../GestionUsuarios/GestionUsuarios.php">Usuarios</a>
-	                </ul>
-	            </div>
+						<li><a href="../GestionUsuarios/GestionUsuarios.php">Usuarios</a></li>
+					</ul>
+				</div>
 			</div>
-	    </nav>
-
-	    <!-- Contiene la tabla entera de mensaje -->
+		</nav>
+		<!-- Contiene la tabla entera de mensaje -->
 	    <section id="usuarios" class="container content-section text-center">
 	    	<div class="seccion-usuario">
 		        <div class="row">
@@ -96,21 +80,9 @@
     	</section>
     	<!-- Footer del HTML -->
 	    <footer>
-			<div class="container text-center">
-		        <?php
-		        	//Indica la sesión iniciada y cierra la sesión.
-					if ( $_SESSION['nombre']) {
-			    		echo "Has iniciado sesion como: ".$_SESSION['nombre']."";
-			    		echo "<br>";
-			    		echo "<a href='CerrarSesion.php'>Cerrar sesion</a>";
-					}
-				?>
-	            <p>Copyright &copy; UNED-MELILLA</p>
-	        </div>
+			<?php
+				include '../modulos/footer.php';
+			?>
 	    </footer>
-
-	    <!-- Hacemos la llamada a todos los archivos externos .js que utilizaremos -->
-	    <script src="../../Recursos/js/bootstrap.js"></script>
-		<script src="../../Recursos/js/grayscale.js"></script>
 	</body>
 </html>

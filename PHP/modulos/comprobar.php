@@ -4,6 +4,6 @@
 	if (isset($_SESSION['nombre'])) {
 		
 	}else{
-		header("Location: index.html");
+		header("Location: index.php");
 	}
 ?>

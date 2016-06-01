@@ -6,7 +6,7 @@
 
     //Si el nombre o el usuario están vacios se mete dentro de la condición y redirecciona a la misma pagina
     if (empty($nombre) || empty($contrasena)) {
-        header("Location: index.html");
+        header("Location: ../index.php");
         exit();
     }
 
@@ -21,15 +21,15 @@
             //Inicia la sesión con el nombre del usuario logeado y te manda a home.php
             session_start();
             $_SESSION['nombre']= $_POST['nombre'];
-            header("Location: home.php");
+            header("Location: ../home.php");
         //Si la contraseña no es correcta te redirije
         }else{
-            header("Location: index.html");
+            header("Location: ../index.php");
             exit();
         }
     //Si la consulta no devuelve nada te redirije a logearte de nuevo
     }else{
-        header("Location: index.html");
+        header("Location: ../index.php");
         exit();
     }
 ?>

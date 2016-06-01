@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8">
-	<link href="../Recursos/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../Recursos/css/grayscale.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-	<title>Login</title>
+	<?php
+		include 'modulos/head.php';
+	?>
+	<link href="../Recursos/css/grayscale.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container content-section text-center">
 		<div class="row">
-			<form class="form-signin" method="POST" action="validar.php">
+			<form class="form-signin" method="POST" action="modulos/validar.php">
 				<h2 class="form-signin-heading">Introduzca los datos</h2>
 				<div class="col-lg-4 col-lg-offset-4">
 					<input class="form-control" placeholder="Introduzca su nombre" name="nombre" required="" autofocus="" type="text">

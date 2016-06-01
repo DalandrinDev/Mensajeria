@@ -1,4 +1,3 @@
-<!-- No funciona este archivo -->
 <?php
 	include '../conectar.php'; #Incluye el archivo conectar.php para establecer conexión con la base de datos.
 	include '../comprobar.php';
