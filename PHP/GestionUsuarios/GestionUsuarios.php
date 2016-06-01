@@ -24,7 +24,7 @@
 				<div class="collapse navbar-collapse navbar-right" id="boton">
 					<ul class="nav navbar-nav">
 						<li><a href="../GestionEnviar/GestionEnviar.php">Mensajes</a></li>
-						<li><a href="GestionTutores/GestionTutores.php">Tutores</a></li>
+						<li><a href="../GestionTutores/GestionTutores.php">Tutores</a></li>
 						<li><a href="#">Usuarios</a></li>
 					</ul>
 				</div>
@@ -33,7 +33,7 @@
 	    <section id="usuarios" class="container content-section text-center">
 	    	<div class="seccion-usuario">
 		        <div class="row">
-		            <div class="col-xs-12 col-sm-9 col-md-4 col-md-offset-4">
+		            <div class="col-xs-12 col-sm-9 col-md-1 col-md-offset-5">
 		                <h2>Usuarios</h2>     
 						<table class="table">
 							<thead>
