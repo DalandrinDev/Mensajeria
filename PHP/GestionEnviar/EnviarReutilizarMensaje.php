@@ -1,6 +1,6 @@
 <?php
-	include '../conectar.php'; #Incluye el archivo conectar.php para establecer conexión con la base de datos.
-	include '../comprobar.php';
+	include '../modulos/conectar.php';
+	include '../modulos/comprobar.php';
 	session_start(); #Inicia la sesión.
 	$fecha = date('Y/m/d H:i'); #Variable almacenada que rellena el campo con la fecha actual
 
