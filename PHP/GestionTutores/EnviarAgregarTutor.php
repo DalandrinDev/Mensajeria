@@ -1,7 +1,7 @@
 <!--Se encarga de recopilar la información de AgregarTutor.php y enviarla a la base de datos para registrar un tutor-->
 <?php
-    include '../modulos/conectar.php'; #Incluye el archivo conectar.php para establecer conexión con la base de datos.
-    include '../modulos/comprobar.php';
+    include '../conectar.php'; #Incluye el archivo conectar.php para establecer conexión con la base de datos.
+    include '../comprobar.php';
     $nombre = $_POST['nombre']; #Variable almacenada por metodo POST
     $apellido = $_POST['apellidos']; #Variable almacenada por metodo POST
     $alias = $_POST['alias']; #Variable almacenada por metodo POST

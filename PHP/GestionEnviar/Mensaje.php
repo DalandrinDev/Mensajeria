@@ -7,6 +7,23 @@
 <html>
 	<head>
 		<script>
+			function validate() {
+				var b = 0, chk=document.getElementsByName("nombre")
+				for(j=0;j<chk.length;j++) {
+					if(chk.item(j).checked == false) {
+						b++;
+					}
+				}
+
+				if(b == chk.length) {
+					alert("Selecciones una o varias opciones");
+					document.getElementById("nombre").style.border = "2px solid red";
+					return false;
+				} else {
+					document.getElementById("nombre").style.border = "";
+				}
+			}
+
 			function limita(elEvento, maximoCaracteres) {
 			  var elemento = document.getElementById("texto");
 
@@ -68,19 +85,18 @@
 					<!-- Esta es la parte donde se selecciona a los tutores -->
 					<div class="col-xs-12 col-sm-9 col-md-6">
 						<h3>Selecciona los Tutores:</h3>
-						<?php
-							$query ="SELECT * FROM tutor"; #Selecciona a todos los tutores.
-							$result = mysqli_query($link, $query); #Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
+							<?php
+								$query ="SELECT * FROM tutor"; #Selecciona a todos los tutores.
+								$result = mysqli_query($link, $query); #Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
 
-							#Este bucle hace que por cada registro de la consulta se almacenen los datos en la variable $registro y los coloque en la tabla que hemos creado anteriormente.
-							while ($registro = mysqli_fetch_array($result)) {
-								
-									echo "<div class='checkbox' id='name'>";
-  										echo "<label><input type='checkbox' class='nombre' name='contacto_".$registro['idtutor']."' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
-									echo "</div>";
-							}
-						?>
-						<input type="checkbox" id="marcar">Seleccionar Todos</input>
+								#Este bucle hace que por cada registro de la consulta se almacenen los datos en la variable $registro y los coloque en la tabla que hemos creado anteriormente.
+								while ($registro = mysqli_fetch_array($result)) {
+										echo "<div class='checkbox' id='name'>";
+	  										echo "<label><input type='checkbox' class='nombre' name='contacto_".$registro['idtutor']."' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
+										echo "</div>";
+								}
+							?>
+							<th><input type="checkbox" id="marcar"/></th>
 					</div>
 				</form>
 			</article>

@@ -5,6 +5,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
     background-position: center;
+    color: #fff;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -33,7 +34,7 @@ p {
 
 .btn-default {
     border: 1px solid #42dca3;
-    color: black;
+    color: #42dca3;
     background-color: transparent;
 }
 
@@ -47,7 +48,7 @@ p {
 
 .btn-danger {
     border: 1px solid #dc4242;
-    color: black;
+    color: #dc4242;
     background-color: transparent;
 }
 
@@ -61,7 +62,7 @@ p {
 
 .btn-warning {
     border: 1px solid #dcc042;
-    color: black;
+    color: #dcc042;
     background-color: transparent;
 }
 

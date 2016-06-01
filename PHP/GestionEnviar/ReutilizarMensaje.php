@@ -11,17 +11,16 @@
 		?>
 	</head>
 	<body>
-		<div class="container text-center">
+		<div class="container content-section text-center">
 			<article class="row">
-				<div class="col-xs-12 col-sm-9 col-md-2 col-md-offset-5">
 				<!-- Aquí empieza el formulario -->
-					<form role="form" method="POST" action="EnviarReutilizarMensaje.php">
+				<form role="form" method="POST" action="EnviarReutilizarMensaje.php">
 					<!-- Esta es la parte donde se selecciona a los tutores -->
-					
+					<div class="col-xs-12 col-sm-9 col-md-6">
 						<h3>Selecciona los Tutores:</h3>
 						<div class="checkbox">
 							<?php
-								echo "<p>El mensaje será firmado por: {$_SESSION['nombre']}</p>";
+							echo "<p>El mensaje será firmado por: {$_SESSION['nombre']}</p>";
 								$_SESSION['clavemensaje']=$_GET['id'];
 								$query ="SELECT * FROM tutor"; #Selecciona a todos los tutores.
 								$result = mysqli_query($link, $query); #Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
@@ -35,12 +34,11 @@
 
 							?>
 							<th><input type="checkbox" id="marcar"/>Marcar todas</th>
+							<button type="submit" class="btn btn-default">Enviar</button>
+							<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
 						</div>
-						<button type="submit" class="btn btn-default">Enviar</button>
-						<br><br>
-						<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
-					</form>
-				</div>
+					</div>
+				</form>
 			</article>
 		</div>
 	    <footer>
