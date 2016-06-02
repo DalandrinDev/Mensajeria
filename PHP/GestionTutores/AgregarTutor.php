@@ -11,13 +11,16 @@
 		?>
 	</head>
 	<body>
-		<div class="container content-section text-center">
+		<?php
+			include '../modulos/nav.php';
+		?>
+		<div class="container text-center">
 			<!-- Aquí empieza el formulario -->
 			<form role="form" method="POST" action="EnviarAgregarTutor.php" class="col-md-4 col-md-offset-4">
 			<h3>Ingresa nuevo Tutor</h3>
 				<!-- Nombre del tutor -->
 				<div class="form-group">
-					<input type="text" class="form-control" name="nombre" placeholder="Introduce el nombre" pattern="^[A-Za-z0-9_-]{1,15}$" required>
+					<input type="text" class="form-control" name="nombre" placeholder="Introduce el nombre" pattern="^[A-Za-z0-9_-]{1,15}$" required />
 				</div>
 
 				<!-- Apellidos del tutor -->
@@ -44,7 +47,7 @@
 						?>
 					</select>
 				</div>
-				<button type="submit" class="btn btn-default">Enviar</button>
+				<button type="submit" class="btn btn-default">Ingresar</button>
 				<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
 			</form>
 		</div>

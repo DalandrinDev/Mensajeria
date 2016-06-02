@@ -1,4 +1,3 @@
-<!--No funciona-->
 <!DOCTYPE html>
 <?php
 	include '../modulos/conectar.php';
@@ -6,41 +5,94 @@
 ?>
 <html>
 	<head>
+		<script>
+			function limita(elEvento, maximoCaracteres) {
+			  var elemento = document.getElementById("texto");
+
+			  // Obtener la tecla pulsada 
+			  var evento = elEvento || window.event;
+			  var codigoCaracter = evento.charCode || evento.keyCode;
+			  // Permitir utilizar las teclas con flecha horizontal
+			  if(codigoCaracter == 37 || codigoCaracter == 39) {
+			    return true;
+			  }
+
+			  // Permitir borrar con la tecla Backspace y con la tecla Supr.
+			  if(codigoCaracter == 8 || codigoCaracter == 46) {
+			    return true;
+			  }
+			  else if(elemento.value.length >= maximoCaracteres ) {
+			    return false;
+			  }
+			  else {
+			    return true;
+			  }
+			}
+
+			function actualizaInfo(maximoCaracteres) {
+			  var elemento = document.getElementById("texto");
+			  var info = document.getElementById("info");
+
+			  if(elemento.value.length >= maximoCaracteres ) {
+			    info.innerHTML = "Maximo "+maximoCaracteres+" caracteres";
+			  }
+			  else {
+			    info.innerHTML = "Puedes escribir hasta "+(maximoCaracteres-elemento.value.length)+" caracteres adicionales";
+			  }
+			}
+		</script>
 		<?php
 			include '../modulos/head.php';
 		?>
 	</head>
 	<body>
-		<div class="container text-center">
+		<?php
+			include '../modulos/nav.php';
+		?>
+		<div class="container content-section text-center">
 			<article class="row">
-				<div class="col-xs-12 col-sm-9 col-md-2 col-md-offset-5">
 				<!-- Aquí empieza el formulario -->
-					<form role="form" method="POST" action="EnviarReutilizarMensaje.php">
-					<!-- Esta es la parte donde se selecciona a los tutores -->
-					
-						<h3>Selecciona los Tutores:</h3>
-						<div class="checkbox">
+				<form role="form" method="POST" action="EnviarMensaje.php" onsubmit="return validate()">
+					<!-- Esta es la parte donde se escribe el mensaje a enviar -->
+						<div class="col-xs-12 col-sm-9 col-md-6">
+							<h2>Mensaje</h2>
+							<!-- Esta linea indicará en todo momento el Autor del mensaje -->
 							<?php
 								echo "<p>El mensaje será firmado por: {$_SESSION['nombre']}</p>";
-								$_SESSION['clavemensaje']=$_GET['id'];
+								$clavemensaje = $_GET['id'];
+								$query1= "SELECT texto FROM mensaje WHERE idmensaje='$clavemensaje'";
+								$result1 = mysqli_query($link, $query1);
+								while ($registro1 = mysqli_fetch_array($result1)) {
+									$var=$registro1['texto'];
+								}
+							?>
+							<p id="info"></p>
+							<textarea class="form-control" maxlength="160" rows="6" cols="30" id="texto" name="texto" onkeypress="return limita(event, 160);" onkeyup="actualizaInfo(160)" required><?php echo $var; ?></textarea>
+							
+							<!-- Botones de navegación -->
+							<button type="submit" class="btn btn-default">Enviar</button>
+							<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
+						</div>
+					<!-- Esta es la parte donde se selecciona a los tutores -->
+					<div class="col-xs-12 col-sm-9 col-md-6">
+						<div class="mentuto">
+							<h3>Selecciona los Tutores:</h3>
+							<?php
 								$query ="SELECT * FROM tutor"; #Selecciona a todos los tutores.
 								$result = mysqli_query($link, $query); #Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
 
 								#Este bucle hace que por cada registro de la consulta se almacenen los datos en la variable $registro y los coloque en la tabla que hemos creado anteriormente.
 								while ($registro = mysqli_fetch_array($result)) {
-										echo "<div class='checkbox'>";
+									
+										echo "<div class='checkbox' id='name'>";
 	  										echo "<label><input type='checkbox' class='nombre' name='contacto_".$registro['idtutor']."' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
 										echo "</div>";
 								}
-
 							?>
-							<th><input type="checkbox" id="marcar"/>Marcar todas</th>
+						<input type="checkbox" id="marcar">Seleccionar Todos</input>
 						</div>
-						<button type="submit" class="btn btn-default">Enviar</button>
-						<br><br>
-						<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
-					</form>
-				</div>
+					</div>
+				</form>
 			</article>
 		</div>
 	    <footer>

@@ -1,7 +1,6 @@
 <?php
 	include '../modulos/conectar.php';
 	include '../modulos/comprobar.php';
-	session_start(); #Inicia la sesión.
 	$mensaje=$_POST['texto']; #Variable almacenada por metodo POST
 	$fecha = date('Y/m/d H:i'); #Variable almacenada que rellena el campo con la fecha actual
 

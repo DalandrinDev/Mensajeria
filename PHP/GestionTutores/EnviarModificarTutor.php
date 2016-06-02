@@ -2,7 +2,6 @@
 <?php
     include '../modulos/conectar.php'; #Incluye el archivo conectar.php para establecer conexión con la base de datos.
     include '../modulos/comprobar.php';
-    session_start(); //Inicia la sesión.
     $nombre = $_POST['nombre']; //Variable almacenada por metodo POST
     $apellido = $_POST['apellidos']; //Variable almacenada por metodo POST
     $alias = $_POST['alias']; //Variable almacenada por metodo POST

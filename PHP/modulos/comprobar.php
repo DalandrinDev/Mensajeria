@@ -4,6 +4,6 @@
 	if (isset($_SESSION['nombre'])) {
 		
 	}else{
-		header("Location: index.php");
+		header("Location: /Mensajeria/PHP/index.php");
 	}
 ?>

@@ -5,6 +5,7 @@
 
 #!usr/bin/env
 #-----Importa los modulos necesarios----#
+from datetime import datetime
 import pexpect #Modulo necesario para ejecutar programas externos, como Telegram-cli.
 import time #Modulo para usar el tiempo.
 import MySQLdb as mbd #Modulo pra poder hacer consultas y acciones con SQL.
@@ -13,7 +14,7 @@ import MySQLdb as mbd #Modulo pra poder hacer consultas y acciones con SQL.
 
 host = 'localhost' #El tipo de servidor.
 usuario = 'admin' #El usuario.
-clave = 'uned' #La contraseña.
+clave = 'uned' #La contrasena.
 basedatos = 'mensajeria' #La base de datos que usaremos.
 con = mbd.connect(host, usuario, clave, basedatos) #Esto crea un cursor que usaremos para hacer el codigo que necesitamos.
 
@@ -56,12 +57,12 @@ for mne in noenviados: #Por cada elemento de los resultados obtenidos sucedera l
 	tutores = cur.fetchall() #Almacena los datos de uno en uno.
 	for tutor_a in tutores: #Por cada elemento en tutores hace lo siguiente
 		tutor = tutor_a["alias"]
-	print "--------------------------------------------"
+	print "Enviando a: "+tutor
 
 	#-----Envia los datos-----
 
 	telegram.sendline("msg "+tutor+" "+texto) #Envia el mensaje a los usuarios y el texto en las variables almacenadas.
-	consulta = "UPDATE enviar SET enviado = 1, fechaenvio = tiempo WHERE idenviar = "+str(mne["idenviar"]) #Est consulta va a cambiar el estado de enviado de 'no' a si al usuario que haya enviado el mensaje.
+	consulta = "UPDATE enviar SET enviado = 1, fechaenvio = NOW() WHERE idenviar = "+str(mne["idenviar"]) #Est consulta va a cambiar el estado de enviado de 'no' a si al usuario que haya enviado el mensaje.
 	cur.execute(consulta) #Ejecuta la consulta anterior.
 	con.commit() #Permite actualizar la base de datos con la utima consulta.
 	time.sleep(1) #Este segundo de espera permite que todos los mensajes llegen a sus destinatarios, asi el programa no se colapsa.

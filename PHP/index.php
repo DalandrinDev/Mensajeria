@@ -7,7 +7,7 @@
 	<link href="../Recursos/css/grayscale.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container content-section text-center">
+	<div class="container text-center">
 		<div class="row">
 			<form class="form-signin" method="POST" action="modulos/validar.php">
 				<h2 class="form-signin-heading">Introduzca los datos</h2>
@@ -23,10 +23,5 @@
 			</form>
 		</div>
 	</div>
-	<script src="../Recursos/js/jquery.js"></script>
-    <script src="../Recursos/js/bootstrap.min.js"></script>
-	<script src="../Recursos/js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-	<script src="../Recursos/js/grayscale.js"></script>
 </body>
 </html>

@@ -47,6 +47,9 @@
 		?>
 	</head>
 	<body>
+		<?php
+			include '../modulos/nav.php';
+		?>
 		<div class="container content-section text-center">
 			<article class="row">
 				<!-- Aquí empieza el formulario -->
@@ -62,11 +65,12 @@
 							<textarea class="form-control" maxlength="160" rows="6" cols="30" id="texto" name="texto" onkeypress="return limita(event, 160);" onkeyup="actualizaInfo(160)" required></textarea>
 							
 							<!-- Botones de navegación -->
-							<button type="submit" class="btn btn-default">Enviar</button>
+							<button type="submit" class="btn btn-default">Enviar Mensaje</button>
 							<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
 						</div>
 					<!-- Esta es la parte donde se selecciona a los tutores -->
 					<div class="col-xs-12 col-sm-9 col-md-6">
+						<div class="mentuto">
 						<h3>Selecciona los Tutores:</h3>
 						<?php
 							$query ="SELECT * FROM tutor"; #Selecciona a todos los tutores.
@@ -81,6 +85,7 @@
 							}
 						?>
 						<input type="checkbox" id="marcar">Seleccionar Todos</input>
+						</div>
 					</div>
 				</form>
 			</article>

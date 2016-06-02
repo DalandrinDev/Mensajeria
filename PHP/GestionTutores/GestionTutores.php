@@ -24,30 +24,14 @@
 		?>
 	</head>
 	<body>
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#boton">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				<a class="navbar-brand light" href="../home.php"><span class="glyphicon glyphicon-envelope"></span>Mensajeria</a>
-				</div>
-				<div class="collapse navbar-collapse navbar-right" id="boton">
-					<ul class="nav navbar-nav">
-						<li><a href="../GestionEnviar/GestionEnviar.php">Mensajes</a></li>
-						<li><a href="#">Tutores</a></li>
-						<li><a href="../GestionUsuarios/GestionUsuarios.php">Usuarios</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	    <section id="tutores" class="container content-section text-center">
+		<?php
+			include '../modulos/nav.php';
+		?>
+	    <section id="tutores" class="container text-center">
 	    	<div class="seccion-usuario">
 		        <div class="row">
 		            <div class="col-xs-12 col-sm-9 col-md-8 col-md-offset-2">
-		                <h2>Tutores</h2>
+		                <h2>Tutores</h2><br>
 		                <input type="button" class="btn btn-default" onclick="window.location.href = 'AgregarTutor.php';" value="Nuevo Tutor">   
 						<table class="table">
 							<thead>
