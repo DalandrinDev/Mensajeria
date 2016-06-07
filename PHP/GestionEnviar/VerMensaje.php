@@ -25,36 +25,41 @@
 							<table class="table table-condensed">
 								<thead>
 									<tr>
-										<th>ID</th>
 										<th>Mensaje</th>
-										<th>Creacion</th>
-										<th>Envio</th>
-										<th>Usuarios</th>
+										<th>Tutor</th>
 										<th>Enviado</th>
-										<th>Autor</th>
 									</tr>
 								</thead>
 
 							<?php
 								$clavever = $_GET['id'];
-								$query = "SELECT mensaje.idmensaje, mensaje.texto, enviar.fechacreacion, enviar.fechaenvio, tutor.nombre, enviar.enviado, mensaje.autor FROM mensaje LEFT JOIN enviar ON '$clavever' = enviar.mensaje_idmensaje INNER JOIN tutor ON tutor.idtutor=enviar.idtutor ORDER BY mensaje.idmensaje"; #Consulta que muestra los mensajes.
-								//$query1 = "SELECT idmensaje, texto FROM mensaje WHERE idmensaje= '$clavever'";
-								//$query2 = "SELECT fechacreacion, fechaenvio, enviado, FROM enviar WHERE idenviar= mensaje_idmensaje";
+								$query = "SELECT * FROM mensaje LEFT JOIN enviar ON $clavever = enviar.mensaje_idmensaje LEFT JOIN tutor ON tutor.idtutor = enviar.idtutor WHERE $clavever = mensaje.idmensaje"; #Consulta que muestra los mensajes.
 								$result = mysqli_query($link, $query);
-								echo '$result';
-								 #Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
+								#Ejecuta la consulta, el $link sale del archivo conectar.php y contiene toda la conexión a la base de datos.
 
 								#Este bucle hace que por cada registro de la consulta se almacenen los datos en la variable $registro y los coloque en la tabla que hemos creado anteriormente.
 								while ($registro = mysqli_fetch_array($result)) {
 									echo '<tbody>';
-										echo '<tr>';
-											echo '<td>'.$registro['idmensaje'].'</td>';
-											echo '<td>'.$registro['texto'].'</td>';
-											echo '<td>'.$registro['fechacreacion'].'</td>';
-											echo '<td>'.$registro['fechaenvio'].'</td>';
-											echo '<td>'.$registro['nombre'].'</td>';
-											echo '<td>'.$registro['enviado'].'</td>';
-											echo '<td>'.$registro['autor'].'</td>';
+										if ($registro['enviado'] != '0') {
+											echo '<tr class="success">';
+												echo '<td>'.$registro['idmensaje'].'</td>';
+												echo '<td>'.$registro['nombre'].'</td>';
+												if ($registro['enviado'] != '0') {
+													echo '<td>'.'Enviado'.'</td>';
+												}else{
+													echo '<td>'.'Sin enviar'.'</td>';
+												}
+											
+										}else {
+											echo '<tr class="active"">';
+												echo '<td>'.$registro['idmensaje'].'</td>';
+												echo '<td>'.$registro['nombre'].'</td>';
+												if ($registro['enviado'] != '0') {
+													echo '<td>'.'Enviado'.'</td>';
+												}else{
+													echo '<td>'.'Sin enviar'.'</td>';
+												}
+											}
 										echo '</tr>';
 									echo '</tbody>';
 								}

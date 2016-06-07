@@ -9,8 +9,7 @@
 
 			//Esta sirve para modificar el tutor, y lo hace usando la idtutor.
 			function ModificarTutor(idtutor) {
-				var agree= confirm("¿Quieres modificar este tutor?");
-				if (agree) {window.location="ModificarTutor.php?id="+idtutor; }
+				window.location="ModificarTutor.php?id="+idtutor;
 			}
 
 			//Esta sirve para eliminar el tutor, y lo hace usando la idtutor.

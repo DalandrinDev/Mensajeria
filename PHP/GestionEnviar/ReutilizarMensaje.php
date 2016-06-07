@@ -6,6 +6,11 @@
 <html>
 	<head>
 		<script>
+			function pregunta(){
+			    if (confirm('¿Estas seguro de enviar este formulario?')){
+			       document.form2.submit()
+			    }
+			} 
 			function limita(elEvento, maximoCaracteres) {
 			  var elemento = document.getElementById("texto");
 
@@ -52,7 +57,7 @@
 		<div class="container content-section text-center">
 			<article class="row">
 				<!-- Aquí empieza el formulario -->
-				<form role="form" method="POST" action="EnviarMensaje.php" onsubmit="return validate()">
+				<form role="form" method="POST" name="form2" action="EnviarMensaje.php" onsubmit="return validate()">
 					<!-- Esta es la parte donde se escribe el mensaje a enviar -->
 						<div class="col-xs-12 col-sm-9 col-md-6">
 							<h2>Mensaje</h2>
@@ -70,7 +75,7 @@
 							<textarea class="form-control" maxlength="160" rows="6" cols="30" id="texto" name="texto" onkeypress="return limita(event, 160);" onkeyup="actualizaInfo(160)" required><?php echo $var; ?></textarea>
 							
 							<!-- Botones de navegación -->
-							<button type="submit" class="btn btn-default">Enviar</button>
+							<button type="submit" class="btn btn-default" onclick="pregunta()">Enviar</button>
 							<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
 						</div>
 					<!-- Esta es la parte donde se selecciona a los tutores -->

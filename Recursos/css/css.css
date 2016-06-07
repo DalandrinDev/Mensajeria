@@ -16,6 +16,13 @@ p {
     font-size: 18px;
 }
 
+.separartop {
+    padding-top: 10px;
+}
+.separardere {
+    padding-right: 30px;
+}
+
 .mentuto {
     
     text-align: center;    

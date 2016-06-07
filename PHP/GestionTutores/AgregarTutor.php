@@ -6,6 +6,13 @@
 ?>
 <html>
 	<head>
+		<script type="text/javascript">
+			function pregunta(){
+			    if (confirm('¿Estas seguro de enviar este formulario?')){
+			       document.form4.submit()
+			    }
+			}
+		</script>
 		<?php
 			include '../modulos/head.php';
 		?>
@@ -16,7 +23,7 @@
 		?>
 		<div class="container text-center">
 			<!-- Aquí empieza el formulario -->
-			<form role="form" method="POST" action="EnviarAgregarTutor.php" class="col-md-4 col-md-offset-4">
+			<form role="form" method="POST" name="form4" action="EnviarAgregarTutor.php" class="col-md-4 col-md-offset-4">
 			<h3>Ingresa nuevo Tutor</h3>
 				<!-- Nombre del tutor -->
 				<div class="form-group">
@@ -47,7 +54,7 @@
 						?>
 					</select>
 				</div>
-				<button type="submit" class="btn btn-default">Ingresar</button>
+				<button type="submit" class="btn btn-default" onclick="pregunta()">Ingresar</button>
 				<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
 			</form>
 		</div>

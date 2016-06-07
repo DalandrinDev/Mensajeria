@@ -6,6 +6,13 @@
 ?>
 <html>
 	<head>
+		<script type="text/javascript">
+			function pregunta(){
+				    if (confirm('¿Estas seguro de enviar este formulario?')){
+				       document.form3.submit()
+				    }
+				}
+		</script>
 		<?php
 			include '../modulos/head.php';
 			$clavetutor = $_GET['id'];
@@ -25,11 +32,11 @@
 		?>
 		<div class="container text-center">
 			<!-- Aquí empieza el formulario -->
-			<form role="form" method="POST" action="EnviarModificarTutor.php" class="col-md-4 col-md-offset-4">
+			<form role="form" method="POST" name="form3" action="EnviarModificarTutor.php" class="col-md-4 col-md-offset-4">
 			<h3>Modificar Tutor</h3>
 				<!-- Nombre del tutor -->
 				<div class="form-group">
-					<input type="text" class="form-control" name="nombre" placeholder="Introduce el nombre" value="<?php echo $var1; ?>" pattern="^[A-Za-z0-9_-]{1,15}$" required>
+					<input type="text" class="form-control" name="nombre" placeholder="Introduce el nombre" value="<?php echo ($var1); ?>" pattern="^[A-Za-z0-9_-]{1,15}$" required>
 				</div>
 
 				<!-- Apellidos del tutor -->
@@ -56,7 +63,7 @@
 						?>
 					</select>
 				</div>
-				<button type="submit" class="btn btn-default">Modificar</button>
+				<button type="submit" class="btn btn-default"onclick="pregunta()">Modificar</button>
 				<input type="button" class="btn btn-danger" onclick="window.history.back();" value="Volver atras">
 			</form>
 		</div>

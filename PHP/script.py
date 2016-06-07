@@ -5,7 +5,7 @@
 
 #!usr/bin/env
 #-----Importa los modulos necesarios----#
-from datetime import datetime
+
 import pexpect #Modulo necesario para ejecutar programas externos, como Telegram-cli.
 import time #Modulo para usar el tiempo.
 import MySQLdb as mbd #Modulo pra poder hacer consultas y acciones con SQL.
@@ -31,7 +31,6 @@ time.sleep(2) #Debemos esperar 2 segundos para que de tiempo a que la lista de c
 #-----Creamos el cursor-----
 
 cur = con.cursor(mbd.cursors.DictCursor)
-tiempo = time.strftime('%Y-%m-%d %H:%M:%S')
 
 #-----Empieza las consultas a la base de datos-----
 

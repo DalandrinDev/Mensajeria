@@ -4,7 +4,7 @@
 	<?php
 		include 'modulos/head.php';
 	?>
-	<link href="../Recursos/css/grayscale.css" rel="stylesheet">
+	<link href="../Recursos/css/css.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container text-center">
