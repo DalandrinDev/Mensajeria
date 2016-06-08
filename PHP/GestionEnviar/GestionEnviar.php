@@ -70,7 +70,7 @@
 												</tr>
 											</thead>
 								<?php
-							  	
+							  	# Mueestra cada uno de los datos dentro de su tabla
 							  	while($registro1 = mysqli_fetch_array($result1)){
 							  		echo '<tbody>';
 										echo '<tr>';

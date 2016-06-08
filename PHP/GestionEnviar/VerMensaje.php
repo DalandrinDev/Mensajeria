@@ -55,6 +55,7 @@
 						}
 					?>
 					</table>
+					<input type="button" class="btn btn-danger separartop" onclick="window.history.back();" value="Volver atras">
 				</div>
 			</div>
 		</section>

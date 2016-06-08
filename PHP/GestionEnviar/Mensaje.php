@@ -8,14 +8,6 @@
 	<head>
 		<!-- Aqui se ponen los scripts de JavaScript -->
 		<script type="text/javascript">
-			// Esta funcion pregunta si es la accion que desea a hacer
-			function pregunta(){
-			    var agree=confirm('¿Estas seguro de que desea enviar este mensaje?')
-			    if (agree){
-			    	document.form1.submit();
-			    }
-			}
-
 			// Esta funcion se encarga de limitar el numero de caracteres que se puede usar dentro del cuadro de texto
 			function limita(elEvento, maximoCaracteres) {
 			  var elemento = document.getElementById("texto");
@@ -82,7 +74,7 @@
 							<textarea class="form-control" maxlength="160" rows="6" cols="30" id="texto" name="texto" onkeypress="return limita(event, 160);" onkeyup="actualizaInfo(160)" required></textarea>
 							
 							<!-- Botones de navegación -->
-							<button type="submit" class="btn btn-default separartop" onclick="pregunta()">Enviar Mensaje</button>
+							<button type="submit" class="btn btn-default separartop" onclick="if(confirm('¿Esta seguro de que quiere enviar este mensaje?') == false){return false;}"">Enviar Mensaje</button>
 							<input type="button" class="btn btn-danger separartop" onclick="window.history.back();" value="Volver atras">
 						</div>
 

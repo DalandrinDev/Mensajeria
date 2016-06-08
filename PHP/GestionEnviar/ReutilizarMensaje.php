@@ -7,13 +7,6 @@
 	<head>
 	<!-- Aqui se guardan los script de javaScript que vamos a utilizar -->
 		<script type="text/javascript">
-		// Esta funcion pregunta si es la accion que desea a hacer
-			function pregunta(){
-			    if (confirm('¿Estas seguro de que quieres reutilizar este mensaje?')){
-			       document.form2.submit()
-			    }
-			}
-
 			// Esta funcion se encarga de limitar el numero de caracteres que se puede usar dentro del cuadro de texto
 			function limita(elEvento, maximoCaracteres) {
 			  var elemento = document.getElementById("texto");
@@ -89,7 +82,7 @@
 							<textarea class="form-control" maxlength="160" rows="6" cols="30" id="texto" name="texto" onkeypress="return limita(event, 160);" onkeyup="actualizaInfo(160)" required><?php echo $var; ?></textarea> 
 							
 							<!-- Botones de navegación -->
-							<button type="submit" class="btn btn-default separartop" onclick="pregunta()">Enviar</button>
+							<button type="submit" class="btn btn-default separartop" onclick="if(confirm('¿Esta seguro de que quiere reutilizar este mensaje?') == false){return false;}">Enviar</button>
 							<input type="button" class="btn btn-danger separartop" onclick="window.history.back();" value="Volver atras">
 						</div>
 					<!-- Esta es la parte donde se selecciona a los tutores -->
