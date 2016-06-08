@@ -21,7 +21,7 @@
 		<?php
 			include '../modulos/nav.php';
 		?>
-		<div class="container text-center">
+		<div class="container text-center separarmuytop">
 			<!-- Aquí empieza el formulario -->
 			<form role="form" method="POST" name="form4" action="EnviarAgregarTutor.php" class="col-md-4 col-md-offset-4">
 			<h3>Ingresa nuevo Tutor</h3>

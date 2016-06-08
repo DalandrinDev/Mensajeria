@@ -1,3 +1,6 @@
+/*  */
+
+/*  */
 body {
     background: url(../img/wallpaper.jpg) no-repeat fixed;
     -webkit-background-size: cover;
@@ -7,22 +10,33 @@ body {
     background-position: center;
 }
 
+/*  */
 h1,h2,h3,h4,h5,h6 {
     text-transform: uppercase;
     font-weight: 700;
 }
 
+/*  */
 p {
     font-size: 18px;
 }
 
+/*  */
 .separartop {
-    padding-top: 10px;
-}
-.separardere {
-    padding-right: 30px;
+    margin-top: 10px;
 }
 
+/*  */
+.separarmuytop {
+	margin-top: 10%;
+}
+
+/*  */
+.separardere {
+    margin-right: 30px;
+}
+
+/*  */
 .mentuto {
     
     text-align: center;    
@@ -32,11 +46,12 @@ p {
     background: #d4d5d5;
 }
 
+/*  */
 .light {
     font-weight: 800;
 }
 
-/*Poner botones verdes*/
+/*  */
 .btn {
     border-radius: 0;
     text-transform: uppercase;
@@ -47,12 +62,14 @@ p {
     transition: all .3s ease-in-out;
 }
 
+/*  */
 .btn-default {
     border: 1px solid #42dca3;
     color: black;
     background-color: transparent;
 }
 
+/*  */
 .btn-default:hover,
 .btn-default:focus {
     border: 1px solid #42dca3;
@@ -61,12 +78,14 @@ p {
     background-color: #42dca3;
 }
 
+/*  */
 .btn-danger {
     border: 1px solid #dc4242;
     color: black;
     background-color: transparent;
 }
 
+/*  */
 .btn-danger:hover,
 .btn-danger:focus {
     border: 1px solid #dc4242;
@@ -75,12 +94,14 @@ p {
     background-color: #dc4242;
 }
 
+/*  */
 .btn-warning {
     border: 1px solid #dcc042;
     color: black;
     background-color: transparent;
 }
 
+/*  */
 .btn-warning:hover,
 .btn-warning:focus {
     border: 1px solid #dcc042;
@@ -89,6 +110,7 @@ p {
     background-color: #dcc042;
 }
 
+/*  */
 table {
     background: #eaebec;
     border-collapse: separate;
@@ -100,6 +122,7 @@ table {
     width: 800px;
 }   
 
+/*  */
 th {
     font-size: 18px;
     background-color:#292929;
@@ -115,6 +138,7 @@ th {
     text-shadow: 0 1px 0 #000;  
 }
 
+/*  */
 th:after {
     content: '';
     display: block;
@@ -126,15 +150,18 @@ th:after {
     width: 100%;
 }
 
+/*  */
 th:first-child {
     border-left: 1px solid #777;    
     box-shadow: inset 1px 1px 0 #999;
 }
 
+/*  */
 th:last-child {
     box-shadow: inset -1px 1px 0 #999;
 }
 
+/*  */
 td {
     font-size:17px;
     border-right: 1px solid #fff;
@@ -146,38 +173,44 @@ td {
     transition: all 300ms;
 }
 
+/*  */
 td:first-child {
     box-shadow: inset 1px 0 0 #fff;
 }   
 
+/*  */
 td:last-child {
     border-right: 1px solid #e8e8e8;
     box-shadow: inset -1px 0 0 #fff;
 }   
 
-
-
+/*  */
 tr:nth-child(odd) td {
     background: #f1f1f1;    
 }
 
+/*  */
 tr:last-of-type td {
     box-shadow: inset 0 -1px 0 #fff; 
 }
 
+/*  */
 tr:last-of-type td:first-child {
     box-shadow: inset 1px -1px 0 #fff;
 }   
 
+/*  */
 tr:last-of-type td:last-child {
     box-shadow: inset -1px -1px 0 #fff;
 }   
 
+/*  */
 tbody:hover td {
     color: transparent;
     text-shadow: 0 0 3px #aaa;
 }
 
+/*  */
 tbody:hover tr:hover td {
     color: #444;
     text-shadow: 0 1px 0 #fff;

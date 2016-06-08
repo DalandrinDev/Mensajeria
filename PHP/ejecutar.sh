@@ -1,1 +1,2 @@
-#La primera es la instalacion de python y la segunda dodne esta guardado el fichero, deberia estar en /var, y el ejecutar.sh /usr/bin/python /var/wwww/html/Mensaje/PHP/script.py 
+#Este es ek archivo que ejecuta el script cada vez que pasan 30 minutos
+/usr/bin/python /var/script.py 

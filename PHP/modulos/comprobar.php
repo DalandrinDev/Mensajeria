@@ -1,4 +1,4 @@
-<!--Este archivo no sirve, de momento-->
+<!-- Este archivo comprueba que se haya iniciado sesion en cada archivo donde esté colocado -->
 <?php
 	session_start();
 	if (isset($_SESSION['nombre'])) {

@@ -1,16 +1,17 @@
-#-----Esta es la base de datos que usaré en el proyecto-----
-#-----Creamos la base de datos e indicamos que la usamos-----
+#-----Esta es la base de datos que usaré en el proyecto-----#
+
+#-----Creamos la base de datos e indicamos que la usamos-----#
 CREATE DATABASE mensajeria;
 USE mensajeria;
 
-#-----La tabla facultad alamacena todas las facultades disponibles en la UNED de Melilla-----
+#-----La tabla facultad alamacena todas las facultades disponibles en la UNED de Melilla-----#
 
 CREATE TABLE facultad (
 	idfacultad INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	facultad VARCHAR(20) NOT NULL
 );
 
-#-----La tabla tutor guarda los tutores que trabajan en el centro, el alias es lo más importante-----
+#-----La tabla tutor guarda los tutores que trabajan en el centro, el alias es lo más importante-----#
 
 CREATE TABLE tutor (
 	idtutor INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -21,7 +22,7 @@ CREATE TABLE tutor (
 	FOREIGN KEY (idfacultad) REFERENCES facultad(idfacultad)
 );
 
-#-----La tabla usuario almacena todos los administradores del centro-----
+#-----La tabla usuario almacena todos los administradores del centro-----#
 
 CREATE TABLE usuario (
 	idusuario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -30,7 +31,7 @@ CREATE TABLE usuario (
 	contrasena VARCHAR(4) NOT NULL
 );
 
-#-----La tabla mensaje almacena el texto que enviaremos a los tutores-----
+#-----La tabla mensaje almacena el texto que enviaremos a los tutores-----#
 
 CREATE TABLE mensaje (
 	idmensaje INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -38,7 +39,7 @@ CREATE TABLE mensaje (
 	autor VARCHAR(15) NOT NULL 
 );
 
-#-----La tabla enviar es la que almacenará los datos necesarios para el correcto funcionamiento d ela aplicación, como el alias del tutor y el mensaje que se quiere enviar-----
+#-----La tabla enviar es la que almacenará los datos necesarios para el correcto funcionamiento d ela aplicación, como el alias del tutor y el mensaje que se quiere enviar-----#
 
 CREATE TABLE enviar (
 	idenviar INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -51,7 +52,7 @@ CREATE TABLE enviar (
 	FOREIGN KEY (mensaje_idmensaje) REFERENCES mensaje(idmensaje)
 );
 
-#-----Inserta los datos por defecto al cargar la base de datos-----
+#-----Inserta los datos por defecto al cargar la base de datos-----#
 
 INSERT INTO usuario VALUES(NULL,'admin','','uned');
 INSERT INTO usuario VALUES(NULL,'pepe','','uned');

@@ -1,3 +1,4 @@
+<!-- Este archivo se encarga de cerrar sesion -->
 <?php
 	session_start();
 	unset($_SESSION["nombre"]); 
