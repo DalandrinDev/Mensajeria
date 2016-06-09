@@ -82,7 +82,7 @@
 							<textarea class="form-control" maxlength="160" rows="6" cols="30" id="texto" name="texto" onkeypress="return limita(event, 160);" onkeyup="actualizaInfo(160)" required><?php echo $var; ?></textarea> 
 							
 							<!-- Botones de navegación -->
-							<button type="submit" class="btn btn-default separartop" onclick="if(confirm('¿Esta seguro de que quiere reutilizar este mensaje?') == false){return false;}">Enviar</button>
+							<button type="submit" class="btn btn-default separartop" id="btnSubmit" onclick="if(confirm('¿Esta seguro de que quiere reutilizar este mensaje?') == false){return false;}">Enviar</button>
 							<input type="button" class="btn btn-danger separartop" onclick="window.history.back();" value="Volver atras">
 						</div>
 					<!-- Esta es la parte donde se selecciona a los tutores -->
@@ -127,6 +127,16 @@
 						$("#marcar").removeAttr("checked");
 					}
 				});
+			});
+
+			// Esta funcion de JQuery permite que sea obligatorio marcar uno de los tutores
+			$("#btnSubmit").click(function(e){
+				if( $(".nombre:checked").length == 0){
+					$(".nombre:first").attr("required", "required");
+				}else{
+					$(".nombre").removeAttr("required");				
+					$("form").submit();
+				}			
 			});
 	    </script>
 	</body>

@@ -23,7 +23,7 @@
 					<table class="table table-condensed table-responsive">
 						<thead>
 							<tr>
-								<th>Mensaje</th>
+								<th>ID Mensaje</th>
 								<th>Tutor</th>
 								<th>Enviado</th>
 							</tr>

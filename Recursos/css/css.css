@@ -1,6 +1,6 @@
-/*  */
+/* Este archivo contiene el CSS de la pagina web */
 
-/*  */
+/* Esta es la parte del body, donde se encuentra el fondo de pantalla */
 body {
     background: url(../img/wallpaper.jpg) no-repeat fixed;
     -webkit-background-size: cover;
@@ -10,33 +10,33 @@ body {
     background-position: center;
 }
 
-/*  */
-h1,h2,h3,h4,h5,h6 {
+/* Esto da estilo a todos los h posibles */
+h1,h2,h3 {
     text-transform: uppercase;
     font-weight: 700;
 }
 
-/*  */
+/* Da estilo a las p */
 p {
     font-size: 18px;
 }
 
-/*  */
+/* Permite separar desde el top un poco los elementos */
 .separartop {
     margin-top: 10px;
 }
 
-/*  */
+/* Permite separar desde el top mucho los elementos */
 .separarmuytop {
 	margin-top: 10%;
 }
 
-/*  */
+/* Permite separar desde la derecha los elementos */
 .separardere {
     margin-right: 30px;
 }
 
-/*  */
+/* Da un color grisaceo a la seleccion de tutores */
 .mentuto {
     
     text-align: center;    
@@ -46,12 +46,12 @@ p {
     background: #d4d5d5;
 }
 
-/*  */
+/* D un poco de grosor al titulos de la aplicacion */
 .light {
     font-weight: 800;
 }
 
-/*  */
+/* Da estilo a los botones */
 .btn {
     border-radius: 0;
     text-transform: uppercase;
@@ -62,14 +62,14 @@ p {
     transition: all .3s ease-in-out;
 }
 
-/*  */
+/* a los botones verdes */
 .btn-default {
     border: 1px solid #42dca3;
     color: black;
     background-color: transparent;
 }
 
-/*  */
+/* hace que se coloré el interior del boton */
 .btn-default:hover,
 .btn-default:focus {
     border: 1px solid #42dca3;
@@ -78,14 +78,14 @@ p {
     background-color: #42dca3;
 }
 
-/*  */
+/* a los botones amarillos */
 .btn-danger {
     border: 1px solid #dc4242;
     color: black;
     background-color: transparent;
 }
 
-/*  */
+/* hace que se coloré el interior del boton */
 .btn-danger:hover,
 .btn-danger:focus {
     border: 1px solid #dc4242;
@@ -94,14 +94,14 @@ p {
     background-color: #dc4242;
 }
 
-/*  */
+/* a los botones rojos */
 .btn-warning {
     border: 1px solid #dcc042;
     color: black;
     background-color: transparent;
 }
 
-/*  */
+/* hace que se coloré el interior del boton */
 .btn-warning:hover,
 .btn-warning:focus {
     border: 1px solid #dcc042;
@@ -110,7 +110,7 @@ p {
     background-color: #dcc042;
 }
 
-/*  */
+/* da estilo a las tablas */
 table {
     background: #eaebec;
     border-collapse: separate;
@@ -122,7 +122,7 @@ table {
     width: 800px;
 }   
 
-/*  */
+/* da estilo a las filas */
 th {
     font-size: 18px;
     background-color:#292929;
@@ -138,7 +138,7 @@ th {
     text-shadow: 0 1px 0 #000;  
 }
 
-/*  */
+/* mas estilo */
 th:after {
     content: '';
     display: block;
@@ -150,18 +150,18 @@ th:after {
     width: 100%;
 }
 
-/*  */
+/* mas estilo */
 th:first-child {
     border-left: 1px solid #777;    
     box-shadow: inset 1px 1px 0 #999;
 }
 
-/*  */
+/* mas estilo */
 th:last-child {
     box-shadow: inset -1px 1px 0 #999;
 }
 
-/*  */
+/* da estilo a las columnas */
 td {
     font-size:17px;
     border-right: 1px solid #fff;
@@ -173,44 +173,44 @@ td {
     transition: all 300ms;
 }
 
-/*  */
+/* mas estilo */
 td:first-child {
     box-shadow: inset 1px 0 0 #fff;
 }   
 
-/*  */
+/* mas estilo */
 td:last-child {
     border-right: 1px solid #e8e8e8;
     box-shadow: inset -1px 0 0 #fff;
 }   
 
-/*  */
+/* mas estilo */
 tr:nth-child(odd) td {
     background: #f1f1f1;    
 }
 
-/*  */
+/* mas estilo */
 tr:last-of-type td {
     box-shadow: inset 0 -1px 0 #fff; 
 }
 
-/*  */
+/* mas estilo */
 tr:last-of-type td:first-child {
     box-shadow: inset 1px -1px 0 #fff;
 }   
 
-/*  */
+/* mas estilo */
 tr:last-of-type td:last-child {
     box-shadow: inset -1px -1px 0 #fff;
 }   
 
-/*  */
+/* mas estilo */
 tbody:hover td {
     color: transparent;
     text-shadow: 0 0 3px #aaa;
 }
 
-/*  */
+/* mas estilo */
 tbody:hover tr:hover td {
     color: #444;
     text-shadow: 0 1px 0 #fff;

@@ -58,7 +58,7 @@
 			<article class="row">
 
 				<!-- Aquí empieza el formulario -->
-				<form role="form" method="POST" name="form1" action="EnviarMensaje.php" onsubmit="return validate()">
+				<form role="form" method="POST" name="form1" action="EnviarMensaje.php" onsubmit="return checkCheckBoxes(this);">
 
 					<!-- Esta es la parte donde se escribe el mensaje a enviar -->
 						<div class="col-xs-12 col-sm-9 col-md-6">
@@ -74,7 +74,7 @@
 							<textarea class="form-control" maxlength="160" rows="6" cols="30" id="texto" name="texto" onkeypress="return limita(event, 160);" onkeyup="actualizaInfo(160)" required></textarea>
 							
 							<!-- Botones de navegación -->
-							<button type="submit" class="btn btn-default separartop" onclick="if(confirm('¿Esta seguro de que quiere enviar este mensaje?') == false){return false;}"">Enviar Mensaje</button>
+							<button type="submit" class="btn btn-default separartop" id="btnSubmit" onclick="if(confirm('¿Esta seguro de que quiere enviar este mensaje?') == false){return false;}"">Enviar Mensaje</button>
 							<input type="button" class="btn btn-danger separartop" onclick="window.history.back();" value="Volver atras">
 						</div>
 
@@ -90,11 +90,12 @@
 							while ($registro = mysqli_fetch_array($result)) {
 								
 									echo "<div class='checkbox' id='name'>";
-  										echo "<label><input type='checkbox' class='nombre' name='contacto_".$registro['idtutor']."' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
+  											echo "<label><input type='checkbox' class='nombre' name='contacto_".$registro['idtutor']."' value='".$registro['idtutor']."'>".$registro['nombre']."</label>";
 									echo "</div>";
 							}
 						?>
-						<input type="checkbox" id="marcar">Seleccionar Todos</input>
+						<!--name='contacto_".$registro['idtutor']."'-->
+							<input type="checkbox" id="marcar">Seleccionar Todos</input>
 						</div>
 					</div>
 				</form>
@@ -118,6 +119,16 @@
 						$("#marcar").removeAttr("checked");
 					}
 				});
+			});
+			
+	    	// Esta funcion de JQuery permite que sea obligatorio marcar uno de los tutores
+			$("#btnSubmit").click(function(e){
+				if( $(".nombre:checked").length == 0){
+					$(".nombre:first").attr("required", "required");
+				}else{
+					$(".nombre").removeAttr("required");				
+					$("form").submit();
+				}			
 			});
 	    </script>
 	</body>

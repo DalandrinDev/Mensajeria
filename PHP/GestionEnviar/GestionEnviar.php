@@ -112,23 +112,23 @@
 								while ($registro = mysqli_fetch_array($result)) {
 									echo '<tbody>';
 										# En esta condicion indicamos que si la fecha de envio tiene como formato 0 en todas sus casillas significa que el mensaje está sin enviar, por lo tanto marcamos de color gris todos los mensajes que esten sin enviar.
-										if ($registro['fechaenvio'] = '0000-00-00 00:00:00') {
-											echo '<tr class="active">';
+										if ($registro['fechaenvio'] != '0000-00-00 00:00:00') {
+											echo '<tr class="success">';
 												echo '<td>'.$registro['idmensaje'].'</td>';
 												echo '<td>'.substr($registro['texto'],0,70).'</td>'; // Solo se mostraran 70 caracteres, para que no se muestre todo el texto en la tabla
 												echo '<td>'.$registro['fechacreacion'].'</td>';
-												echo '<td>'.'Sin enviar'.'</td>'; // Pone el estado del envio sin enviar
+												echo '<td>'.$registro['fechaenvio'].'</td>'; 
 												echo '<td>'.$registro['autor'].'</td>';
 
 												# Estos son los dos botones que al pulsar sobre ellos activan las funciones de JavaScript de arriba
 												echo '<td>'.'<input type="button" class="btn btn-warning" id='.$registro["idmensaje"].' onclick="VerMensaje(this.id)" value="Ver">'.'<div class="separardere separartop">'.'<input type="button" class="btn btn-danger" id='.$registro["idmensaje"].' onclick="ReutilizarMensaje(this.id)" value="Reutilizar">'.'</div>'.'</td>';
 										# En caso contrario se considera que el mensaje ha sido enviado, con lo cual las tablas se mostrarán de color verde y mostrarán la fecha del envio.
 										}else{
-											echo '<tr class="success">';
+											echo '<tr class="active">';
 												echo '<td>'.$registro['idmensaje'].'</td>';
 												echo '<td>'.substr($registro['texto'],0,70).'</td>';
 												echo '<td>'.$registro['fechacreacion'].'</td>';
-												echo '<td>'.$registro['fechaenvio'].'</td>';
+												echo '<td>'.'Sin enviar'.'</td>'; // Pone el estado del envio sin enviar
 												echo '<td>'.$registro['autor'].'</td>';
 
 												# Estos son los dos botones que al pulsar sobre ellos activan las funciones de JavaScript de arriba

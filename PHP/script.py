@@ -1,7 +1,8 @@
 #Este sript se va a encargar de comprobar los mensajes que no estan enviados, y tras ello hacer una serie de consultas para obtener el alias y el mensaje que se quiere enviar, para finalmente cambiar el envio a si.
 
 #IMPORTANTE:
-#Este archivo debe guardarse para que este mas seguro en la carpeta /var.
+#Este archivo debe guardarse para que este mas seguro en la carpeta /var
+#En crontab -e debes poner la siguiente line */30 * * * * /usr/bin/python /var/script.py
 
 #!usr/bin/env
 #-----Importa los modulos necesarios----#
